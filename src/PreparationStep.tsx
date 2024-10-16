@@ -19,7 +19,8 @@ export function PreparationStep(props: PreparationStepProps) {
           <NumberedCheckbox
             number={props.number}
             checked={checked}
-            onChange={(e) => props.cookMode && setChecked(checked => !checked)}
+            onClick={(e) => e.stopPropagation()}
+            onChange={(e) => props.cookMode && setChecked(e.target.checked)}
           />
         ) : (
           <NumberedCheckboxListReplacement>
