@@ -1,0 +1,68 @@
+#root {
+  padding: 0.5rem;
+}
+
+.icon {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  overflow: visible;
+  line-height: 1;
+  height: 1em;
+}
+
+.cooking-recipes {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: var(--background-color-primary);
+  box-shadow: var(--box-shadow-medium);
+  padding: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+    
+  .search-input {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--background-color-secondary);
+    background-color: var(--background-color-secondary);
+
+    &:focus {
+      background-color: var(--background-color-primary);
+    }
+  }
+  
+  /* &:not(&:has(.search-input:focus)) .search-results { */
+  /* display: none; */
+  /*   } */
+
+  .search-results {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    background-color: var(--background-color-primary);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow-xl);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    li {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+  }
+}

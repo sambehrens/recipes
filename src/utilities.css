@@ -1,0 +1,108 @@
+/* Flex */
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-xs {
+  gap: 0.25rem;
+}
+
+.gap-s {
+  gap: 0.5rem;
+}
+
+.gap-m {
+  gap: 1rem;
+}
+
+.gap-l {
+  gap: 1.5rem;
+}
+
+.gap-xl {
+  gap: 2rem;
+}
+
+/* cursor */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* opacity */
+
+.opacity-25 {
+  opacity: 0.25;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+/* padding */
+
+.p-0 {
+  padding: 0;
+}
+
+.p-s {
+  padding: 0.5rem;
+}
+
+.p-m {
+  padding: 1rem;
+}
+
+.pt-xs {
+  padding-top: 0.25rem;
+}
+
+.py-s {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-m {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.px-s {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* text decoration */
+
+.strike {
+  text-decoration: line-through;
+}
