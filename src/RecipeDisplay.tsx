@@ -126,6 +126,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
         {props.recipe.ingredients.map((ingredient) => {
           return (
             <IngredientItem
+              key={`${ingredient.name}${ingredient.quantity}${ingredient.measurement}`}
               ingredient={ingredient}
               cookMode={props.cookMode}
               multiplier={multiplier}
