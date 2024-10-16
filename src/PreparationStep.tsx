@@ -19,7 +19,7 @@ export function PreparationStep(props: PreparationStepProps) {
           <NumberedCheckbox
             number={props.number}
             checked={checked}
-            onChange={(e) => props.cookMode && setChecked(e.target.checked)}
+            onChange={(e) => props.cookMode && setChecked(e.currentTarget.checked)}
           />
         ) : (
           <NumberedCheckboxListReplacement>
