@@ -106,3 +106,9 @@
 .strike {
   text-decoration: line-through;
 }
+
+/* webkit */
+
+.no-webkit-highlight {
+  -webkit-tap-highlight-color: transparent;
+}

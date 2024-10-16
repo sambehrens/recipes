@@ -27,7 +27,7 @@ export function IngredientItem(props: IngredientItemProps) {
   } ${pluralized} ${props.ingredient.name}`;
   return (
     <li className="inline-flex items-start flex-wrap">
-      <label className={`inline-flex items-start gap-s ${props.cookMode && checked ? "strike" : ""}`}>
+      <label className={`inline-flex items-start gap-s no-webkit-highlight ${props.cookMode && checked ? "strike" : ""}`}>
         {props.cookMode ? (
           <Checkbox
             checked={checked}

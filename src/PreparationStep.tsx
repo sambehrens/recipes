@@ -14,7 +14,7 @@ export function PreparationStep(props: PreparationStepProps) {
   let [checked, setChecked] = useState(false);
   return (
     <li className="inline-flex items-start gap-s flex-wrap">
-      <label className={`inline-flex items-start gap-s ${props.cookMode && checked ? "strike" : ""}`}>
+      <label className={`inline-flex items-start gap-s no-webkit-highlight ${props.cookMode && checked ? "strike" : ""}`}>
         {props.cookMode ? (
           <NumberedCheckbox
             number={props.number}
