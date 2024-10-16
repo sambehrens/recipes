@@ -31,7 +31,7 @@ export function IngredientItem(props: IngredientItemProps) {
         {props.cookMode ? (
           <Checkbox
             checked={checked}
-            onChange={(e) => props.cookMode && setChecked(e.currentTarget.checked)}
+            onChange={(e) => props.cookMode && setChecked(checked => !checked)}
           />
         ) : (
           <CheckboxListReplacement>
