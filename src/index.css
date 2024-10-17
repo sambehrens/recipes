@@ -24,56 +24,52 @@ form, label {
   
   --text-color-primary: black;
   --text-color-secondary: #57606a;
-  --background-color-primary: white;
-  --background-color-secondary: #eee;
+  --background-color-primary: #F4F1EC;
+  --background-color-secondary: #E0DDD6;
   --box-shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --box-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --box-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  
+  background-color: var(--background-color-primary);
 }
 
-a {
+a, .link {
   font-weight: 500;
-  color: #646cff;
+  font-size: inherit;
+  color: #E76F51;
   text-decoration: inherit;
+  padding-left: 0;
+  padding-right: 0;
 }
-a:hover {
-  color: #535bf2;
+a:hover, .link:hover {
+  color: #B24A3B;
+  text-decoration: underline;
 }
 
 body {
   margin: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5 {
+  font-family: 'Platypi', serif;
 }
 
 button {
   border: none;
-  background-color: white;
-  /* border-radius: 8px; */
-  /* border: 1px solid transparent; */
-  /* padding: 0.6em 1.2em; */
+  background-color: var(--background-color-primary);
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  /* background-color: #f9f9f9; */
   cursor: pointer;
-  /* transition: border-color 0.25s; */
 }
-/* button:hover { */
-/*   border-color: #646cff; */
-/* } */
-/* button:focus, */
-/* button:focus-visible { */
-/*   outline: 4px auto -webkit-focus-ring-color; */
-/* } */
 
-.sticky-container {
-  position: sticky;
-  top: 0; /* The distance from the top of the viewport when the element becomes sticky */
-  z-index: 1000; /* Ensures it stays above other content */
-  background-color: white; /* Optional: ensure the background color is maintained */
-  border-bottom: 2px solid #ddd;
+label, input[type="checkbox"] {
+  touch-action: manipulation;
+}
+
+@font-face {
+  font-family: 'Platypi';
+  src: url('Platypi-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
 }

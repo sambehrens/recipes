@@ -5,6 +5,7 @@ export type Recipe = {
   categories: Category[];
   source?: string;
   notes?: string;
+  defaultMeasurement?: "weight";
 };
 
 export const Measurement = {
@@ -36,6 +37,10 @@ export const Measurement = {
     display: "lb",
     plural: "lb",
   },
+  gram: {
+    display: "gram",
+    plural: "grams",
+  },
   noQuantity: {
     display: "",
     plural: "",
@@ -52,6 +57,12 @@ export type Ingredient = {
   measurement: keyof typeof Measurement;
   name: string;
   scaler: Scaler;
+  weight?: Weight;
+};
+
+export type Weight = {
+  quantity: number;
+  measurement: keyof typeof Measurement;
 };
 
 export const categories = [
@@ -59,10 +70,15 @@ export const categories = [
   "Meats",
   "Chicken",
   "Beef",
+  "Fish",
   "Pasta",
+  "Stew",
+  "Bread",
+  "Sourdough",
   "Rice",
   "Dessert",
   "Instant-Pot",
+  "Miscellaneous",
 ] as const;
 export type Category = (typeof categories)[number];
 
@@ -112,7 +128,7 @@ export const recipes: Recipe[] = [
       "Rince rice and put into the instant-pot.",
       "Add water and salt to the instant-pot.",
       'Put the lid on the pot and click "Manual".',
-      "Set time to 4 minutes on high pressure.",
+      "Set time to 4 minutes.",
       'Enjoy immediately or allow "Keep Warm" mode for up to 10 minutes.',
     ],
   },
@@ -144,7 +160,7 @@ export const recipes: Recipe[] = [
       "Rince rice and put into the instant-pot.",
       "Add water and salt to the instant-pot.",
       'Put the lid on the pot and click "Manual".',
-      "Set time to 5 minutes on high pressure.",
+      "Set time to 5 minutes.",
       'Enjoy immediately or allow "Keep Warm" mode for up to 10 minutes.',
     ],
   },
@@ -176,8 +192,57 @@ export const recipes: Recipe[] = [
       "Rince rice and put into the instant-pot.",
       "Add water and salt to the instant-pot.",
       'Put the lid on the pot and click "Manual".',
-      "Set time to 30 minutes on high pressure.",
+      "Set time to 30 minutes.",
       'Enjoy immediately or allow "Keep Warm" mode for up to 10 minutes.',
+    ],
+  },
+  {
+    title: "Sushi Rice (Instant-Pot)",
+    categories: ["Rice", "Instant-Pot"],
+    ingredients: [
+      {
+        quantity: 2,
+        measurement: "cup",
+        name: "short grain Calrose rice (e.g., Nishiki)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "cup",
+        name: "cold water",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1 / 3,
+        measurement: "cup",
+        name: "rice vinegar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "Sugar",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Rinse the rice ten times.",
+      "Place the rinsed rice into the Instant-Pot and add the cold water.",
+      'Put the lid on the Instant-Pot and click "Manual".',
+      "Set time to 5 minutes.",
+      "While the rice cooks, add the rice vinegar, salt and sugar into a saucepan on medium heat.",
+      "Whisk until the sugar and salt dissolve, then pour the mixture into a container to cool.",
+      "When the rice is done, transfer it to a wide-bottomed container.",
+      "Use a wooden or plastic paddle to spread the rice evenly.",
+      "Pour the vinegar mixture over the rice and mix well.",
+      "Let the rice cool for 20-30 minutes, stirring every 5 minutes to release steam.",
+      "Once the rice is warm but not hot to the touch, it’s ready to use for making sushi.",
     ],
   },
   {
@@ -290,7 +355,7 @@ export const recipes: Recipe[] = [
     ],
   },
   {
-    title: "Sticky Apricot Garlic Glazed Chicken",
+    title: "Sticky Apricot Glazed Chicken",
     categories: ["Meats", "Chicken"],
     source:
       "https://www.food.com/recipe/so-easy-sticky-apricot-garlic-glazed-chicken-148046?units=us&scale=6",
@@ -621,6 +686,584 @@ export const recipes: Recipe[] = [
       "Grill burgers for 4-5 minutes (medium rare).",
       "Flip the burgers and cook for 4-5 more minutes.",
       "In the last minute of cooking, add a slice of cheese for cheese burgers.",
+    ],
+  },
+  {
+    title: "Sourdough Loaf",
+    source:
+      "https://alexandracooks.com/2017/10/24/artisan-sourdough-made-simple-sourdough-bread-demystified-a-beginners-guide-to-sourdough-baking/",
+    categories: ["Bread", "Sourdough"],
+    defaultMeasurement: "weight",
+    ingredients: [
+      {
+        quantity: 50,
+        measurement: "gram",
+        name: "bread flour (to feed starter)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 50,
+        measurement: "gram",
+        name: "water, room temperature, filtered (to feed starter)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "bubbly, active starter",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 100,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1.5 + 1 / 16,
+        measurement: "cup",
+        name: "room temperature, filtered water",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 375,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 4 + 1 / 8,
+        measurement: "cup",
+        name: "bread flour",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 500,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2.5,
+        measurement: "teaspoon",
+        name: "sea salt",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 12,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "rice flour",
+        scaler: Scaler.Constant,
+      },
+    ],
+    steps: [
+      "Feed the starter with the flour and water. Let it double in size.",
+      "Mix the starter and water together in a large bowl with a spatula.",
+      "Add the flour and salt. Mix to combine, finishing by hand if necessary to form a rough dough.",
+      "Move dough to the proofing container and cover with a towel to let rest for 30 minutes.",
+      "After 30 minutes, stretch and fold: Grab a corner of the dough, pull it up, and fold it into the center. Repeat 4 to 5 times.",
+      "Let the dough rest for another 30 minutes and repeat the stretching and folding.",
+      "If you have time, repeat the stretching and folding twice more over 2 hours.",
+      "Cover the container with a towel and let rise for 8-10 hours at 70°F (21°C), or until it increases by 50% in volume.",
+      "If in a warm environment, monitor the rise more closely. Use visual cues to determine when the bulk fermentation is done.",
+      "Transfer the dough onto a lightly floured surface and gently shape it into a round.",
+      "Let the dough rest seam-side up for 30 minutes.",
+      "Line an 8-inch bowl or proofing basket with a rice-floured towel.",
+      "Shape the dough again and place it seam-side up into the lined bowl.",
+      "Cover the dough and refrigerate for 1 to 48 hours (24 hours recommended).",
+      "Preheat the oven to 550°F (290°C) with a Dutch oven inside.",
+      "Cut a piece of parchment to fit the baking pot.",
+      "Place the parchment over the dough and invert the bowl to release it.",
+      "Score the dough with a knife or razor blade (a simple 'X' works well).",
+      "Lower the oven temperature to 450°F (230°C), transfer the dough to the preheated pot, cover, and bake for 30 minutes.",
+      "Remove the lid (or remove the loaf from the dutch oven entirely), lower the oven to 400°F (200°C), and bake for 10-15 minutes more.",
+      "If needed, lift the loaf out and bake directly on the oven rack for the last 5-10 minutes.",
+      "Cool on a wire rack for 1 hour before slicing.",
+      "Store at room temperature in an airtight container for up to 3 days, or freeze for longer storage.",
+    ],
+  },
+  {
+    title: "Sourdough Focaccia",
+    source:
+      "https://alexandracooks.com/2019/03/22/simple-sourdough-focaccia-a-beginners-guide/",
+    categories: ["Bread", "Sourdough"],
+    defaultMeasurement: "weight",
+    ingredients: [
+      {
+        quantity: 50,
+        measurement: "gram",
+        name: "bread flour (to feed starter)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 50,
+        measurement: "gram",
+        name: "water, room temperature, filtered (to feed starter)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "active starter",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 100,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2.5,
+        measurement: "teaspoon",
+        name: "kosher salt",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 10,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1.75,
+        measurement: "cup",
+        name: "room temperature water",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 440,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 4,
+        measurement: "cup",
+        name: "bread flour",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 512,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 3,
+        measurement: "tablespoon",
+        name: "extra-virgin olive oil, divided",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "flaky sea salt, such as Maldon, for sprinkling",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Feed the starter with the flour and water. Let it double in size.",
+      "Place the starter, salt, and water in a large bowl and stir with a spatula to combine.",
+      "Add the flour and mix until fully incorporated.",
+      "If time allows, perform one 'fold': 30 minutes after mixing, pull the dough up and into the center, rotating the bowl between pulls. Repeat 8-10 times.",
+      "Drizzle a splash of olive oil over the dough and rub to coat.",
+      "Cover the bowl and let the dough rise at room temperature for 4 to 18 hours, until doubled in volume.",
+      "Prepare a 9×13-inch pan by adding 2 tablespoons of olive oil (butter the pan if using glass to prevent sticking).",
+      "Gently deflate the dough and release it from the bowl. Scoop it into the prepared pan.",
+      "Fold the dough envelope-style from top to bottom and side to side, forming a rough rectangle. Turn seam-side down.",
+      "Rub the top with oil and let it rest uncovered for 4 to 6 hours, until puffy and nearly doubled.",
+      "Preheat the oven to 425ºF.",
+      "Rub hands lightly with oil and press all ten fingers gently into the dough to dimple and stretch it to nearly fit the pan.",
+      "Sprinkle generously with flaky sea salt.",
+      "Bake for about 25-30 minutes, or until golden all around.",
+      "Transfer the bread to a cooling rack and let cool for at least 20 minutes before slicing.",
+    ],
+  },
+  {
+    title: "Skillet Sourdough Biscuits (like Gus McCrae's)",
+    categories: ["Bread", "Sourdough"],
+    source:
+      "https://www.kingarthurbaking.com/recipes/the-simplest-sourdough-biscuits-recipe",
+    defaultMeasurement: "weight",
+    ingredients: [
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "all-purpose flour",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 120,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "baking powder",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 12,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 0.25,
+        measurement: "teaspoon",
+        name: "salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 4,
+        measurement: "tablespoon",
+        name: "unsalted butter, cold, thinly sliced",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 60,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 3 / 8,
+        measurement: "cup",
+        name: "sourdough starter",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 90,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "milk or heavy cream, plus more if needed to bring the dough together",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 30,
+          measurement: "gram",
+        },
+      },
+    ],
+    steps: [
+      "Preheat the oven to 450°F.",
+      'Rub a 9" or larger cast iron skillet with a bit of oil and place it in the top third of the oven.',
+      "In a medium bowl, whisk together the flour, baking powder, and salt.",
+      "Work in the cold butter, mixing until fairly well combined but with some small chunks of butter remaining intact.",
+      "Stir in the starter, then the milk or cream, adding enough to make a cohesive, firm dough.",
+      "Transfer the dough to a greased piece of parchment or waxed paper, or other greased work surface.",
+      "Knead it gently several times to smooth it out.",
+      'Fold it in thirds like a letter, then pat it into a rough 4” x 8” rectangle; it should be a scant 3/4" thick.',
+      "Flip the rectangle over so the smoother side is on top.",
+      "Cut eight square biscuits, or use a 2” biscuit cutter to cut rounds, patting together the scraps as necessary to cut additional biscuits",
+      "Wrap the biscuits in the parchment or waxed paper and place them in the freezer while the oven finishes preheating.",
+      "Remove the hot skillet from the oven.",
+      "Unwrap the biscuits and arrange them in the skillet (or on the baking sheet).",
+      "Place the skillet or pan on the oven’s upper rack.",
+      "Bake the biscuits for about 12 to 14 minutes. The biscuits should be lightly browned.",
+      "Remove the biscuits from the oven and brush them with melted butter, if desired; brown butter is especially yummy.",
+      "Allow the biscuits to cool completely, then store airtight at room temperature for several days.",
+    ],
+  },
+  {
+    title: "Beer Battered Fish",
+    categories: ["Meats", "Fish"],
+    source:
+      "https://www.food.com/recipe/beer-battered-fish-130102?units=us&scale=8",
+    ingredients: [
+      {
+        quantity: 1,
+        measurement: "noQuantity",
+        name: "avocado oil (for frying)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 8,
+        measurement: "count",
+        name: "(4 ounce) cod fish fillets",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "all-purpose flour",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "garlic powder",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "paprika",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "teaspoon",
+        name: "salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "teaspoon",
+        name: "ground black pepper",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "egg, beaten",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 12,
+        measurement: "ounce",
+        name: "bottle of beer",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Heat oil in a deep fryer to 365°F (185°C).",
+      "Rinse fish, pat dry, and season with salt and pepper.",
+      "In a bowl, combine flour, garlic powder, paprika, salt, and pepper.",
+      "Stir the beaten egg into the dry ingredients.",
+      "Gradually mix in one beer until a thin batter forms (like pancake batter).",
+      "Dip fish fillets into the batter, one at a time, then carefully drop them into the hot oil.",
+      "Fry the fish, turning once, until both sides are golden brown.",
+      "Drain the fried fish on paper towels and serve warm.",
+    ],
+  },
+  {
+    title: "Chicken and Dumplings",
+    source: "https://thecozycook.com/chicken-and-dumplings/",
+    categories: ["Stew"],
+    ingredients: [
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "olive oil",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "pound",
+        name: "bone-in skinless chicken breast or thighs",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "noQuantity",
+        name: "salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "noQuantity",
+        name: "pepper",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 5,
+        measurement: "tablespoon",
+        name: "butter",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "small yellow onion, diced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "carrots, diced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "count",
+        name: "celery sticks, diced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "count",
+        name: "garlic cloves, minced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "Worcestershire sauce",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "hot sauce (e.g., Franks)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1 / 3,
+        measurement: "cup",
+        name: "flour",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 4.5,
+        measurement: "cup",
+        name: "chicken broth",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "chicken bouillon cube (optional)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1.5,
+        measurement: "cup",
+        name: "half and half",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.75,
+        measurement: "cup",
+        name: "frozen peas",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "onion powder",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "dried basil",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "dried parsley",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "thyme",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "rosemary",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "mustard powder",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.25,
+        measurement: "teaspoon",
+        name: "ground sage",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.125,
+        measurement: "teaspoon",
+        name: "pepper",
+        scaler: Scaler.Multiply,
+      },
+      // Dumplings
+      {
+        quantity: 2,
+        measurement: "cup",
+        name: "cake flour or all-purpose flour",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "teaspoon",
+        name: "baking powder",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "baking soda",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "teaspoon",
+        name: "garlic powder",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "teaspoon",
+        name: "sugar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.75,
+        measurement: "cup",
+        name: "cold sour cream",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.25,
+        measurement: "cup",
+        name: "cold milk",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 4,
+        measurement: "tablespoon",
+        name: "butter, melted",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Season the chicken with salt and pepper. Heat olive oil in a soup pot over medium-high heat and sear the chicken for 3 minutes per side. Let the chicken rest for 10 minutes, then dice into bite-sized pieces.",
+      "Combine the onion powder, dried basil, parsley, thyme, rosemary, mustard powder, ground sage, and pepper and set aside.",
+      "Melt butter in the same pot over medium heat and scrape the bottom of the pot.",
+      "Add diced onions, carrots, and celery, cooking for 5 minutes.",
+      "Add garlic, Worcestershire sauce, hot sauce, and seasonings. Cook for 1 minute.",
+      "Add flour and toss to coat. Cook for 2 minutes, stirring continuously.",
+      "Add chicken broth in small splashes, stirring continuously and scraping the bottom of the pot. Add half and half and bouillon if using.",
+      "Add frozen peas and bring to a gentle boil. Let the soup simmer uncovered while you make the dumplings.",
+      "For the dumplings, combine flour, baking powder, baking soda, salt, garlic powder, and sugar in a bowl.",
+      "Add cold milk, sour cream, and melted butter. Use a folding motion to form a dough, being careful not to overmix.",
+      "Add the chicken and any juices back into the soup and stir to combine. Reduce the heat to low.",
+      "Use a cookie scoop to place the dumplings evenly over the soup. Spoon a little liquid over each dumpling.",
+      "Cover tightly and increase the heat slightly to bring the soup to a gentle simmer. Set a timer for 15 minutes without lifting the lid for the dumplings to steam.",
+      "After 15 minutes, check the dumplings with a toothpick. If it comes out clean, it’s ready. If not, cover and simmer for a few more minutes.",
+      "Once the dumplings are cooked through, garnish with parsley and serve!",
+    ],
+  },
+  {
+    title: "How To Start the Traeger",
+    categories: ["Miscellaneous"],
+    ingredients: [],
+    steps: [
+      "Close any windows that are open near the grill.",
+      "Take the cover off and roll it out so it is not next to the house and plug it in.",
+      "Verify that there are plenty of pellets in the hopper.",
+      "Clean off the grill grates.",
+      "(Important!) With the lid open, turn the dial to 'Smoke'.",
+      "Once the grill has started emitting smoke (~5 minutes), turn the dial to your desired temperature and close the lid.",
+      "When the grill has reached the desired temperature, grill away!",
+      "(Important!) When you are finished grilling, turn the dial to 'Shutdown Cycle'. Do not unplug the grill or turn the power switch off.",
+      "Once you don't hear the grill humming anymore, turn the power switch off and unplug it from the outlet.",
+      "Once the grill is barely warm or cool to the touch, roll it next to the house and put the cover on it.",
     ],
   },
 ];

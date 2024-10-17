@@ -7,11 +7,11 @@ type ToggleProps = {
   uncheckedIcon: IconObject;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export function Toggle(props: ToggleProps) {
+export function Toggle({uncheckedIcon, checkedIcon, ...props}: ToggleProps) {
   return (
     <label className={styles.toggle}>
       <div className={styles.toggleBob}>
-        <Icon icon={props.checked ? props.checkedIcon : props.uncheckedIcon} />
+        <Icon icon={props.checked ? checkedIcon : uncheckedIcon} />
       </div>
       <input type="checkbox" {...props} />
     </label>
