@@ -4,6 +4,7 @@ import { Recipe, getRecipeId, recipes, sortRecipesByCategory } from "./recipes";
 import { Icon } from "./Icon";
 import { arrowRightSmall } from "./icons";
 import styles from "./SearchBar.module.css";
+import {useLocalStorage} from "./useLocalStorage";
 
 export const sortedRecipes = sortRecipesByCategory(recipes);
 
@@ -34,6 +35,7 @@ export function SearchBar() {
   let [results, setResults] = useState<Recipe[]>(sortedRecipes);
   let inputRef = useRef<HTMLInputElement>(null);
   let [searchResultsOpen, setSearchResultsOpen] = useState(false);
+  let [recentSearches, setRecentSearches] = useLocalStorage<Recipe[]>("recent-search-results", []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
