@@ -7,6 +7,7 @@
 
   .searchRow {
     white-space: nowrap;
+    overflow: hidden;
 
     .searchInput {
       display: inline-flex;
@@ -24,21 +25,23 @@
         background-color: var(--background-color-primary);
         width: calc(100% - 6ch - 1.25rem);
       }
+      
+      &:focus {
+        outline: none;
+        border-color: #E76F51;
+      }
     }
 
     .searchCancel {
       padding: 0 0.5rem 0 0.5rem;
       margin-left: 0.5rem;
       opacity: 0;
-      transform: scale(0);
-      transition: opacity var(--animation-duration) ease-in-out,
-        transform var(--animation-duration) ease-in-out;
+      transition: opacity var(--animation-duration) ease-in-out;
     }
 
     .searchInput:focus + .searchCancel,
     .searchInput.resultsOpen + .searchCancel {
       opacity: 1;
-      transform: scale(1);
     }
   }
 
