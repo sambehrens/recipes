@@ -4,7 +4,7 @@ import { Recipe, getRecipeId, recipes, sortRecipesByCategory } from "./recipes";
 import { Icon } from "./Icon";
 import { arrowRightSmall } from "./icons";
 import styles from "./SearchBar.module.css";
-import {useLocalStorage} from "./useLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const sortedRecipes = sortRecipesByCategory(recipes);
 
@@ -35,7 +35,10 @@ export function SearchBar() {
   let [results, setResults] = useState<Recipe[]>(sortedRecipes);
   let inputRef = useRef<HTMLInputElement>(null);
   let [searchResultsOpen, setSearchResultsOpen] = useState(false);
-  let [recentSearches, setRecentSearches] = useLocalStorage<Recipe[]>("recent-search-results", []);
+  let [recentSearches, setRecentSearches] = useLocalStorage<Recipe[]>(
+    "recent-search-results",
+    []
+  );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -51,6 +54,11 @@ export function SearchBar() {
       setSearchResultsOpen(true);
     }
   };
+
+  let mergedResults =
+    query.trim().length === 0 && recentSearches.length > 0
+      ? dedupeByKeyPreserveFirst([...recentSearches, ...results], "title")
+      : results;
 
   return (
     <div className={styles.searchBar}>
@@ -76,12 +84,20 @@ export function SearchBar() {
       </div>
       {searchResultsOpen && (
         <ul className={styles.searchResults}>
-          {results.map((recipe) => (
+          {mergedResults.map((recipe) => (
             <li key={getRecipeId(recipe)} className="flex flex-col">
               <a
                 href={`#${getRecipeId(recipe)}`}
                 className={styles.searchLink}
-                onClick={() => setSearchResultsOpen(false)}
+                onClick={() => {
+                  setRecentSearches((old) =>
+                    dedupeByKeyPreserveFirst([recipe, ...old], "title").slice(
+                      0,
+                      10
+                    )
+                  );
+                  setSearchResultsOpen(false);
+                }}
               >
                 <div className={styles.searchBreadcrumbs}>
                   {recipe.categories.map((category, index) => {
@@ -99,11 +115,23 @@ export function SearchBar() {
               </a>
             </li>
           ))}
-          {results.length === 0 && (
+          {mergedResults.length === 0 && (
             <li className={styles.noResults}>No recipes found...</li>
           )}
         </ul>
       )}
     </div>
   );
+}
+
+function dedupeByKeyPreserveFirst<T>(items: T[], key: keyof T): T[] {
+  const map = new Map<any, T>();
+
+  for (const item of items) {
+    if (!map.has(item[key])) {
+      map.set(item[key], item); // Only add the first occurrence
+    }
+  }
+
+  return Array.from(map.values());
 }
