@@ -5,46 +5,19 @@ import {
   categories,
   getRecipeId,
   recipes,
-  sortRecipesByCategory,
 } from "./recipes";
 import { RecipeDisplay } from "./RecipeDisplay";
-import Fuse from "fuse.js";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NestedCategoryTree } from "./NestedCategoryTree";
 import { buildNestedCategoryTree } from "./buildNestedCategoryTree";
 import { Icon } from "./Icon";
-import { arrowRightSmall, info } from "./icons";
+import { info } from "./icons";
 import { useWakeLock } from "./useWakeLock";
-
-let sortedRecipes = sortRecipesByCategory(recipes);
-
-let fuse = new Fuse(sortedRecipes, {
-  includeScore: true,
-  keys: [
-    {
-      name: "title",
-      weight: 1,
-    },
-    {
-      name: "ingredients",
-      weight: 0.3,
-    },
-    {
-      name: "steps",
-      weight: 0.1,
-    },
-    {
-      name: "categories",
-      weight: 0.7,
-    },
-  ],
-});
+import {SearchBar, sortedRecipes} from "./SearchBar";
 
 const nestedCategoryTree = buildNestedCategoryTree(recipes, categories);
 
 function App() {
-  let [query, setQuery] = useState("");
-  let [results, setResults] = useState<Recipe[]>([]);
   let [cookModeRecipes, setCookModeRecipes] = useState<Recipe[]>([]);
   let { isWakeLockActive, requestWakeLock, releaseWakeLock } = useWakeLock();
 
@@ -80,56 +53,12 @@ function App() {
     };
   }, []);
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setQuery(value);
-
-    if (value.trim() === "") {
-      setResults([]);
-    } else {
-      const fuseResults = fuse.search(value);
-      const recipeResults = fuseResults.map((result) => result.item);
-      setResults(recipeResults);
-    }
-  };
-
   return (
     <div id="top" className="flex flex-col">
       <div className="flex flex-col gap-xl">
         <div className="flex flex-col gap-m">
           <h1>Sam's Recipes</h1>
-          <div className="flex flex-col search-bar">
-            <input
-              type="search"
-              placeholder="Search recipes"
-              value={query}
-              className="search-input"
-              onChange={handleSearch}
-            ></input>
-            {results.length > 0 && (
-              <ul className="search-results flex flex-col">
-                {results.map((recipe) => (
-                  <li key={getRecipeId(recipe)} className="flex flex-col">
-                    <a href={`#${getRecipeId(recipe)}`} className="search-link">
-                      <div className="search-breadcrumbs">
-                        {recipe.categories.map((category, index) => {
-                          return (
-                            <Fragment key={category}>
-                              <span>{category}</span>
-                              {index < recipe.categories.length - 1 && (
-                                <Icon icon={arrowRightSmall} />
-                              )}
-                            </Fragment>
-                          );
-                        })}
-                      </div>
-                      {recipe.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          <SearchBar />
           <div>
             <NestedCategoryTree category={nestedCategoryTree} parentId="" />
           </div>

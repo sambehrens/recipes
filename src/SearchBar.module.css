@@ -1,0 +1,95 @@
+.searchBar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .searchRow {
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 1rem; */
+      white-space: nowrap;
+    
+    .searchInput {
+      display: inline-flex;
+      /* flex-grow: 1; */
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--background-color-secondary);
+      background-color: var(--background-color-secondary);
+      width: 100%;
+      transition: width 100ms ease-in-out;
+
+      &:focus, &.resultsOpen {
+        background-color: var(--background-color-primary);
+        width: calc(100% - 6ch - 1.5rem);
+      }
+    }
+    
+    .searchCancel {
+      padding: 0 0.5rem 0 0.5rem;
+      margin-left: 0.5rem;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 100ms, transform 100ms;
+      
+      /* .resultsOpen { */
+      /*   opacity: 1; */
+      /*   transform: scale(1); */
+      /* } */
+    }
+    
+    .searchInput:focus + .searchCancel,
+    .searchInput.resultsOpen + .searchCancel {
+        opacity: 1;
+        transform: scale(1);
+    }
+  }
+
+  .searchResults {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    background-color: var(--background-color-primary);
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow-xl);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0.5rem 0;
+    max-height: 44vh;
+    overflow: auto;
+
+    li {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+
+      &:hover {
+        background-color: var(--background-color-secondary);
+      }
+
+      .searchLink {
+        padding: 0.25rem 1rem;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        .searchBreadcrumbs {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          color: var(--text-color-secondary);
+          font-size: 0.7rem;
+        }
+      }
+    }
+    
+    .noResults {
+      padding: 0.25rem 1rem;
+      color: var(--text-color-secondary);
+    }
+  }
+}
