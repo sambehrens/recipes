@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Fuse from "fuse.js";
 import { Recipe, getRecipeId, recipes, sortRecipesByCategory } from "./recipes";
 import { Icon } from "./Icon";
@@ -40,6 +40,19 @@ export function SearchBar() {
     []
   );
 
+  useEffect(() => {
+    const handler = (event: MouseEvent) => {
+      let parentEl = (event.target as Element).closest("#search-bar");
+      if (!parentEl) {
+        setSearchResultsOpen(false);
+      }
+    };
+    document.addEventListener("click", handler);
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setQuery(value);
@@ -61,7 +74,7 @@ export function SearchBar() {
       : results;
 
   return (
-    <div className={styles.searchBar}>
+    <div id="search-bar" className={styles.searchBar}>
       <div className={styles.searchRow}>
         <input
           ref={inputRef}
