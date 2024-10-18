@@ -70,7 +70,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
             <Icon icon={link} />
           </a>
         </div>
-        <div className="flex items-center flex-wrap gap-m">
+        <div className="flex items-center flex-wrap gap-m pt-xs">
           {props.recipe.source && (
             <a
               href={props.recipe.source}

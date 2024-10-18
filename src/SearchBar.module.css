@@ -14,21 +14,27 @@
       /* flex-grow: 1; */
       font-size: 1rem;
       padding: 0.5rem;
-      border-radius: 0.5rem;
+      border-radius: 0.75rem;
       border: 1px solid var(--background-color-secondary);
       background-color: var(--background-color-secondary);
       width: 100%;
-      transition: width var(--animation-duration) ease-in-out;
+      transition: width var(--animation-duration) ease-in-out,
+        background-color var(--animation-duration) ease-in-out;
+      -webkit-tap-highlight-color: transparent;
 
       &:focus,
       &.resultsOpen {
         background-color: var(--background-color-primary);
         width: calc(100% - 6ch - 1.25rem);
       }
-      
+
       &:focus {
         outline: none;
-        border-color: #E76F51;
+        border-color: #e76f51;
+      }
+
+      &:active {
+        background-color: #ebe8e1;
       }
     }
 
