@@ -40,10 +40,15 @@ a, .link {
   text-decoration: inherit;
   padding-left: 0;
   padding-right: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 a:hover, .link:hover {
   color: #B24A3B;
   text-decoration: underline;
+}
+
+a:active, .link:active {
+  color: #8E3A30;
 }
 
 body {

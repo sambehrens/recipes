@@ -52,25 +52,25 @@ export function SearchBar() {
 
   return (
     <div className={styles.searchBar}>
-       <div className={styles.searchRow}>
+      <div className={styles.searchRow}>
         <input
           ref={inputRef}
           id="search-input"
           type="search"
           placeholder="Search recipes"
           value={query}
-          className={`${styles.searchInput} ${searchResultsOpen ? styles.resultsOpen : ""}`}
+          className={`${styles.searchInput} ${
+            searchResultsOpen ? styles.resultsOpen : ""
+          }`}
           onChange={handleSearch}
           onClick={() => !searchResultsOpen && setSearchResultsOpen(true)}
         ></input>
-        {searchResultsOpen && (
-          <button
-            className={`link ${styles.searchCancel}`}
-            onClick={() => setSearchResultsOpen(false)}
-          >
-            Cancel
-          </button>
-        )}
+        <button
+          className={`link ${styles.searchCancel}`}
+          onClick={() => setSearchResultsOpen(false)}
+        >
+          Cancel
+        </button>
       </div>
       {searchResultsOpen && (
         <ul className={styles.searchResults}>
@@ -97,7 +97,9 @@ export function SearchBar() {
               </a>
             </li>
           ))}
-           {results.length === 0 && <li className={styles.noResults}>No recipes found...</li>}
+          {results.length === 0 && (
+            <li className={styles.noResults}>No recipes found...</li>
+          )}
         </ul>
       )}
     </div>
