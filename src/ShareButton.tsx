@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Icon } from "./Icon";
 import { clipboard, share } from "./icons";
 
@@ -9,7 +9,9 @@ type ShareButtonProps = {
 };
 
 export function ShareButton(props: ShareButtonProps) {
-  let shareApiAvailable = useMemo(() => {
+  const [shareApiAvailable, setShareApiAvailable] = useState(false);
+
+  useEffect(() => {
     let available = false;
     try {
       available =
@@ -19,10 +21,9 @@ export function ShareButton(props: ShareButtonProps) {
     } catch (err) {
       available = false;
     }
-    return available;
-  }, [props.text]);
+    setShareApiAvailable(available);
+  }, [props.text, props.url, props.title]);
 
-  console.log(shareApiAvailable);
   return (
     <>
       {shareApiAvailable && (
