@@ -132,3 +132,13 @@
 .text-base {
   font-size: 1rem;
 }
+
+.text-secondary {
+  color: var(--text-color-secondary);
+}
+
+/* Background */
+
+.bg-secondary {
+  background-color: var(--background-color-secondary);
+}

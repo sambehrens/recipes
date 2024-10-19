@@ -55,7 +55,7 @@ function App() {
         <div className="flex flex-col gap-m">
           <h1>Sam's Recipes</h1>
           <SearchBar />
-          <div>
+          <div className={cookModeRecipes.length !== 0 ? "opacity-25" : ""}>
             <NestedCategoryTree category={nestedCategoryTree} parentId="" />
           </div>
         </div>
@@ -74,12 +74,25 @@ function App() {
             }
           />
         ))}
-        <p>
-          <Icon icon={info} /> This website uses a Siri Shortcut to add
-          ingredients to my grocery list in the Apple Reminders app. If you are
-          also on an Apple device, you can create a shortcut of the same name:
-          "Add To Grocery List", and take advantage of this feature.
-        </p>
+        <div
+          className={`flex flex-col gap-m text-secondary bg-secondary p-m ${
+            cookModeRecipes.length !== 0 ? "opacity-25" : ""
+          }`}
+        >
+          <p className="text-s">
+            <Icon icon={info} /> Disclaimer: These aren't so much "my recipes"
+            as they are recipes that I got from somewhere else and enjoyed or
+            were recommended to me with great fervor. Often times the person
+            that I got them from was my Mom, so thanks Mom. When I have a source
+            I link to it below the recipe title.
+          </p>
+          <p className="text-s">
+            <Icon icon={info} /> This website uses a Siri Shortcut to add
+            ingredients to my grocery list in the Apple Reminders app. If you
+            are also on an Apple device, you can create a shortcut of the same
+            name: "Add To Grocery List", and take advantage of this feature.
+          </p>
+        </div>
       </div>
       <FloatingButton cookModeRecipes={cookModeRecipes} />
     </div>
