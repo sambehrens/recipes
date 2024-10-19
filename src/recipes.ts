@@ -125,7 +125,7 @@ export const recipes: Recipe[] = [
       },
     ],
     steps: [
-      "Rince rice and put into the instant-pot.",
+      "Rinse rice and put into the instant-pot.",
       "Add water and salt to the instant-pot.",
       'Put the lid on the pot and click "Manual".',
       "Set time to 4 minutes.",
@@ -157,7 +157,7 @@ export const recipes: Recipe[] = [
       },
     ],
     steps: [
-      "Rince rice and put into the instant-pot.",
+      "Rinse rice and put into the instant-pot.",
       "Add water and salt to the instant-pot.",
       'Put the lid on the pot and click "Manual".',
       "Set time to 5 minutes.",
@@ -189,7 +189,7 @@ export const recipes: Recipe[] = [
       },
     ],
     steps: [
-      "Rince rice and put into the instant-pot.",
+      "Rinse rice and put into the instant-pot.",
       "Add water and salt to the instant-pot.",
       'Put the lid on the pot and click "Manual".',
       "Set time to 30 minutes.",

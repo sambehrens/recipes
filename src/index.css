@@ -33,6 +33,10 @@ form, label {
   background-color: var(--background-color-primary);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a, .link {
   font-weight: 500;
   font-size: inherit;

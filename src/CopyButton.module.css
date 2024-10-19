@@ -1,0 +1,41 @@
+.copyButtonWrapper {
+  position: relative;
+
+  .copiedConfirmation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding: 0.25rem;
+    margin-top: 0.25rem;
+    background-color: var(--background-color-primary);
+    color: var(--text-color-secondary);
+    border-radius: 0.625em;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    
+    &.show {
+      animation: fadeInThenOut 2s ease-in-out; /* Match the animation duration with JS timeout */
+    }
+  }
+}
+
+@keyframes fadeInThenOut {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

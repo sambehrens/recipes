@@ -5,7 +5,6 @@ import {
   arrowRightSmall,
   externalLink,
   toc,
-  link,
   lock,
   unlock,
   cart,
@@ -18,6 +17,7 @@ import { Radio } from "./SingleSelect";
 import { IngredientItem } from "./Ingredient";
 import { PreparationStep } from "./PreparationStep";
 import { ShareButton } from "./ShareButton";
+import { CopyButton } from "./CopyButton";
 
 type RecipeDisplayProps = {
   recipe: Recipe;
@@ -35,13 +35,14 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
   let id = getRecipeId(props.recipe);
   return (
     <div
+      id={`${getRecipeId(props.recipe)}-container`}
       className={`flex flex-col gap-m ${
         !props.cookMode && props.cookModeOn ? "opacity-25" : "opacity-100"
       }`}
     >
       <div>
         <div className="flex items-center">
-          <a href="#top" className="inline-flex items-center">
+          <a href="#" className="inline-flex items-center">
             <Icon icon={toc} />
           </a>
           <Icon icon={arrowRightSmall} />
@@ -66,9 +67,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
           <h2 className="inline-flex" id={id}>
             {props.recipe.title}
           </h2>
-          <a href={`#${id}`} className="inline-flex items-center">
-            <Icon icon={link} />
-          </a>
+          <CopyButton copyText={`${getUrlWithoutHash()}#${id}`} />
         </div>
         <div className="flex items-center flex-wrap gap-m pt-xs">
           {props.recipe.source && (
@@ -157,7 +156,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
             </div>
             <ul
               className={`ingredients flex flex-col gap-xs p-s ${
-                lockIngredients ? "sticky-container" : ""
+                lockIngredients ? "sticky-ingredients" : ""
               }`}
               style={{ top: "-2" }}
             >

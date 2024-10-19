@@ -25,12 +25,12 @@
   gap: 0.25rem;
 }
 
-.sticky-container {
+.sticky-ingredients {
   position: sticky;
   top: 0;
   z-index: 1000;
   background-color: var(--background-color-primary);
-  border-bottom: 2px solid #ddd;
   max-height: 50vh;
   overflow: auto;
+  box-shadow: 0 2px #ddd;
 }

@@ -1,0 +1,41 @@
+.nestedSection {
+  &.notRootSection,
+  .recipesList li {
+    border-left: 1px solid #bbb;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+
+    &:last-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    &:last-child::before {
+      content: "";
+      display: inline-block;
+      width: 0.25rem;
+      height: 0.7rem;
+      border-left: 1px solid #bbb;
+      border-bottom: 1px solid #bbb;
+      margin-right: 0.25rem;
+    }
+  }
+  
+  &.notRootSection:last-child::before {
+    height: 0.625rem !important;
+  }
+
+  .recipesList {
+    padding: 0;
+
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.categoryName {
+  font-size: 0.875rem;
+}

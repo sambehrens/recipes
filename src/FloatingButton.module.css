@@ -1,0 +1,18 @@
+.floatingButton {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--background-color-primary);
+  padding: 0.75rem 1rem;;
+  border-radius: 0.625rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 200ms ease, transform 200ms ease;
+  pointer-events: none;
+  
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

@@ -1,5 +1,6 @@
 import { getRecipeId } from "./recipes";
 import { NestedCategory } from "./buildNestedCategoryTree";
+import styles from "./NestedCategoryTree.module.css";
 
 type NestedCategoryTreeProps = {
   category: NestedCategory;
@@ -17,20 +18,26 @@ export function NestedCategoryTree({
 
   return (
     <div
-      style={
+      className={`${styles.nestedSection} ${
         category.name !== "Root" && parentId !== "Root"
-          ? { paddingLeft: "1rem" }
-          : undefined
-      }
+          ? styles.notRootSection
+          : ""
+      }`}
     >
-      {category.name !== "Root" && <div id={currentId}>{category.name}</div>}
-      <ul>
-        {category.recipes.map((recipe) => (
-          <li key={getRecipeId(recipe)}>
-            <a href={`#${getRecipeId(recipe)}`}>{recipe.title}</a>
-          </li>
-        ))}
-      </ul>
+      <div>
+        {category.name !== "Root" && (
+          <div id={currentId} className={styles.categoryName}>
+            {category.name}
+          </div>
+        )}
+        <ul className={styles.recipesList}>
+          {category.recipes.map((recipe) => (
+            <li key={getRecipeId(recipe)}>
+              <a href={`#${getRecipeId(recipe)}`}>{recipe.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
       {category.subcategories.map((subcategory) => (
         <NestedCategoryTree
           key={subcategory.name}

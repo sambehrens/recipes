@@ -35,9 +35,9 @@ export function IngredientItem(props: IngredientItemProps) {
     measurementToUse === "noQuantity" ? "" : quantity
   } ${pluralized} ${props.ingredient.name}`;
   return (
-    <li className="inline-flex items-start flex-wrap">
+    <li className="inline-flex items-start flex-wrap text-base">
       <label
-        className={`inline-flex items-start gap-s no-webkit-highlight ${
+        className={`inline-flex items-start gap-s no-webkit-highlight text-base ${
           props.cookMode && checked ? "strike" : ""
         }`}
       >

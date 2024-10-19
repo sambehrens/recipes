@@ -14,6 +14,7 @@ import { Icon } from "./Icon";
 import { info } from "./icons";
 import { useWakeLock } from "./useWakeLock";
 import {SearchBar, sortedRecipes} from "./SearchBar";
+import {FloatingButton} from "./FloatingButton";
 
 const nestedCategoryTree = buildNestedCategoryTree(recipes, categories);
 
@@ -54,7 +55,7 @@ function App() {
   }, []);
 
   return (
-    <div id="top" className="flex flex-col">
+    <div className="flex flex-col">
       <div className="flex flex-col gap-xl">
         <div className="flex flex-col gap-m">
           <h1>Sam's Recipes</h1>
@@ -85,13 +86,7 @@ function App() {
           "Add To Grocery List", and take advantage of this feature.
         </p>
       </div>
-      {cookModeRecipes.length > 0 && (
-        <div className="cooking-recipes">
-          {cookModeRecipes.map((recipe) => (
-            <a href={`#${getRecipeId(recipe)}`}>{recipe.title}</a>
-          ))}
-        </div>
-      )}
+      <FloatingButton cookModeRecipes={cookModeRecipes} />
     </div>
   );
 }

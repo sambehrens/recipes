@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Icon } from "./Icon";
-import { clipboard, share } from "./icons";
+import { share } from "./icons";
 
 type ShareButtonProps = {
   text?: string;
@@ -9,7 +9,7 @@ type ShareButtonProps = {
 };
 
 export function ShareButton(props: ShareButtonProps) {
-  const [shareApiAvailable, setShareApiAvailable] = useState(false);
+  const [shareApiAvailable, setShareApiAvailable] = useState(true);
 
   useEffect(() => {
     let available = false;
@@ -25,33 +25,19 @@ export function ShareButton(props: ShareButtonProps) {
   }, [props.text, props.url, props.title]);
 
   return (
-    <>
-      {shareApiAvailable && (
-        <button
-          className="link inline-flex items-center justify-center gap-xs"
-          onClick={() => {
-            try {
-              navigator.share(props);
-            } catch (err) {
-              // do nothing
-            }
-          }}
-        >
-          <Icon icon={share} /> Share
-        </button>
-      )}
+    shareApiAvailable && (
       <button
         className="link inline-flex items-center justify-center gap-xs"
         onClick={() => {
           try {
-            navigator.clipboard.writeText(props.url);
+            navigator.share(props);
           } catch (err) {
             // do nothing
           }
         }}
       >
-        <Icon icon={clipboard} /> Copy link
+        <Icon icon={share} /> Share
       </button>
-    </>
+    )
   );
 }
