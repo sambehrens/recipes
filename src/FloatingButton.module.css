@@ -1,18 +1,48 @@
 .floatingButton {
   position: fixed;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  background-color: var(--background-color-primary);
-  padding: 0.75rem 1rem;;
-  border-radius: 0.625rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 200ms ease, transform 200ms ease;
-  pointer-events: none;
-  
-  &.visible {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+  bottom: 1rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-top-left-radius: 0.625rem;
+  border-bottom-left-radius: 0.625rem;
+  /* box-shadow: var(--box-shadow-medium); */
+
+  .animatedLink {
+    --animation-duration: 200ms;
+    --animation-function: ease;
+
+    background-color: var(--background-color-primary);
+
+    display: flex;
+    opacity: 0;
+    transform: translateY(1.25rem);
+    height: 0;
+    padding: 0;
+    transition: opacity var(--animation-duration) var(--animation-function),
+      transform var(--animation-duration) var(--animation-function),
+      height var(--animation-duration) var(--animation-function),
+      padding var(--animation-duration) var(--animation-function);
+    pointer-events: none;
+
+    &.visible {
+      transform: translateY(0);
+      opacity: 1;
+      height: auto;
+      padding: 0.75rem 1rem;
+      pointer-events: auto;
+      border-left: 1px solid #e76f51;
+
+      &:nth-child(1 of &) {
+        border-top-left-radius: 0.625rem;
+        border-top: 1px solid #e76f51;
+      }
+
+      &:nth-last-child(1 of &) {
+        border-bottom-left-radius: 0.625rem;
+        border-bottom: 1px solid #e76f51;
+      }
+    }
   }
 }

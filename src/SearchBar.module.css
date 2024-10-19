@@ -11,7 +11,6 @@
 
     .searchInput {
       display: inline-flex;
-      /* flex-grow: 1; */
       font-size: 1rem;
       padding: 0.5rem;
       border-radius: 0.75rem;

@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { Recipe, getRecipeId } from "./recipes";
 import styles from "./FloatingButton.module.css";
+import { cx } from "./cx";
 
-interface FloatingButtonProps {
+type FloatingButtonProps = {
   cookModeRecipes: Recipe[];
-}
+};
 
 type RecipeEntry = {
   recipe: Recipe;
   direction: "up" | "down";
   onScreen: boolean;
 };
+
+const TOP_BUTTON_SCROLL_THRESHOLD = 200;
 
 export function FloatingButton({ cookModeRecipes }: FloatingButtonProps) {
   const [recipes, setRecipes] = useState<RecipeEntry[]>(() =>
@@ -24,9 +27,16 @@ export function FloatingButton({ cookModeRecipes }: FloatingButtonProps) {
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
+    // handle showing top link on first load
+    if (window.scrollY > TOP_BUTTON_SCROLL_THRESHOLD) {
+      setShowTopLink(true);
+    }
+  }, []);
+
+  useEffect(() => {
     // handle showing 'Top' link
     function handleScroll() {
-      const scrolledMoreThan200 = window.scrollY > 200;
+      const scrolledMoreThan200 = window.scrollY > TOP_BUTTON_SCROLL_THRESHOLD;
       setShowTopLink(scrolledMoreThan200);
     }
 
@@ -80,25 +90,30 @@ export function FloatingButton({ cookModeRecipes }: FloatingButtonProps) {
   let offScreenRecipes = recipes.filter((recipe) => !recipe.onScreen);
 
   return (
-    <div
-      className={`${styles.floatingButton} ${
-        offScreenRecipes.length > 0 ||
-        (showTopLink && cookModeRecipes.length === 0)
-          ? styles.visible
-          : ""
-      }`}
-    >
-      {showTopLink && cookModeRecipes.length === 0 && <a href="#">↑ Top</a>}
-      {offScreenRecipes.length > 0 && (
-        <div className="flex flex-col gap-s">
-          {offScreenRecipes.map(({ recipe, direction }) => (
-            <a key={getRecipeId(recipe)} href={`#${getRecipeId(recipe)}`}>
+    <>
+      <div className={styles.floatingButton}>
+        <a
+          href="#"
+          className={cx(
+            styles.animatedLink,
+            showTopLink && cookModeRecipes.length === 0 && styles.visible
+          )}
+        >
+          ↑ Top
+        </a>
+        <div className={"flex flex-col"}>
+          {recipes.map(({ recipe, direction, onScreen }) => (
+            <a
+              key={getRecipeId(recipe)}
+              href={`#${getRecipeId(recipe)}`}
+              className={cx(styles.animatedLink, !onScreen && styles.visible)}
+            >
               {direction === "up" ? "↑" : "↓"} {recipe.title}
             </a>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 
