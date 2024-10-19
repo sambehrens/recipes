@@ -131,7 +131,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
                 checked={weightMode}
                 onChange={() => setWeightMode((wm) => !wm)}
               />
-              Weight mode
+              Show weights
             </label>
           )}
           {props.recipe.ingredients.length > 0 && (
