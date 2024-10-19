@@ -65,6 +65,7 @@
     max-height: 37vh;
     overflow: auto;
     font-size: 1rem;
+    z-index: 100;
 
     li {
       list-style-type: none;

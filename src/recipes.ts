@@ -1377,6 +1377,12 @@ export const recipes: Recipe[] = [
         name: "pepper",
         scaler: Scaler.Constant,
       },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "grated Parmesan cheese",
+        scaler: Scaler.Constant,
+      },
     ],
     steps: [
       "Combine the tomatoes, their juices, the butter and the onion halves in a saucepan. Add half the salt.",
@@ -1387,6 +1393,7 @@ export const recipes: Recipe[] = [
       "Once the pot has come to a boil, add the gnocci.",
       "Gnocchi cooks quickly. As they float to the top, remove them from the water and place them into a pasta bowl.",
       "Discard the onion from the sauce before tossing the sauce with pasta.",
+      "Serve with grated Parmesan cheese and bread."
     ],
   },
   {
