@@ -46,9 +46,12 @@ a, .link {
   padding-right: 0;
   -webkit-tap-highlight-color: transparent;
 }
-a:hover, .link:hover {
-  color: #B24A3B;
-  text-decoration: underline;
+
+@media (hover: hover) {
+  a:hover, .link:hover {
+    color: #B24A3B;
+    text-decoration: underline;
+  }
 }
 
 a:active, .link:active {

@@ -1,11 +1,6 @@
 import "./App.css";
 import "./utilities.css";
-import {
-  Recipe,
-  categories,
-  getRecipeId,
-  recipes,
-} from "./recipes";
+import { Recipe, categories, getRecipeId, recipes } from "./recipes";
 import { RecipeDisplay } from "./RecipeDisplay";
 import { useEffect, useState } from "react";
 import { NestedCategoryTree } from "./NestedCategoryTree";
@@ -13,8 +8,8 @@ import { buildNestedCategoryTree } from "./buildNestedCategoryTree";
 import { Icon } from "./Icon";
 import { info } from "./icons";
 import { useWakeLock } from "./useWakeLock";
-import {SearchBar, sortedRecipes} from "./SearchBar";
-import {FloatingButton} from "./FloatingButton";
+import { SearchBar, sortedRecipes } from "./SearchBar";
+import { FloatingButton } from "./FloatingButton";
 
 const nestedCategoryTree = buildNestedCategoryTree(recipes, categories);
 
