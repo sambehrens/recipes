@@ -87,8 +87,6 @@ export function FloatingButton({ cookModeRecipes }: FloatingButtonProps) {
     return () => observer.current?.disconnect();
   }, [cookModeRecipes]);
 
-  let offScreenRecipes = recipes.filter((recipe) => !recipe.onScreen);
-
   return (
     <>
       <div className={styles.floatingButton}>
