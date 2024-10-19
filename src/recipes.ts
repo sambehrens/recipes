@@ -873,7 +873,7 @@ export const recipes: Recipe[] = [
     ],
   },
   {
-    title: "Skillet Sourdough Biscuits (like Gus McCrae's)",
+    title: "Skillet Sourdough Biscuits",
     categories: ["Bread", "Sourdough"],
     source:
       "https://www.kingarthurbaking.com/recipes/the-simplest-sourdough-biscuits-recipe",
