@@ -86,7 +86,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
         particleCount: 200,
         ticks: 100,
         spread: 55,
-        origin: { x: 0.5, y: 1 },
+        origin: { x: 0.5, y: 1.1 },
         colors: ["#E76F51", "#F4A261", "#E9C46A", "#2A9D8F"],
         disableForReducedMotion: true,
       });
@@ -107,7 +107,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
 
   return (
     <div
-      id={`${getRecipeId(props.recipe)}-container`}
+      id={id}
       className={`flex flex-col gap-m ${
         !props.cookMode && props.cookModeOn ? "opacity-25" : "opacity-100"
       }`}
@@ -136,7 +136,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
           })}
         </div>
         <div className="flex items-center gap-s">
-          <h2 className="inline-flex" id={id}>
+          <h2 className="inline-flex">
             {props.recipe.title}
           </h2>
           <CopyButton copyText={`${getUrlWithoutHash()}#${id}`} />

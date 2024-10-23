@@ -53,7 +53,7 @@ export function FloatingButton({ cookModeRecipes }: FloatingButtonProps) {
           cookModeRecipes.map((recipe) => {
             let intersectedEntry = findLast(
               entries,
-              (entry) => entry.target.id === `${getRecipeId(recipe)}-container`
+              (entry) => entry.target.id === getRecipeId(recipe)
             );
             if (intersectedEntry) {
               const direction =
@@ -78,9 +78,7 @@ export function FloatingButton({ cookModeRecipes }: FloatingButtonProps) {
     );
 
     cookModeRecipes.forEach((recipe) => {
-      const target = document.getElementById(
-        `${getRecipeId(recipe)}-container`
-      );
+      const target = document.getElementById(getRecipeId(recipe));
       if (target && observer.current) observer.current.observe(target);
     });
 
