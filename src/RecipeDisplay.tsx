@@ -1,5 +1,5 @@
-import { Fragment, useState } from "react";
-import { Recipe, getRecipeId } from "./recipes";
+import { Fragment, useEffect, useState } from "react";
+import { Recipe, getIngredientId, getRecipeId, getStepId } from "./recipes";
 import { Icon } from "./Icon";
 import {
   arrowRightSmall,
@@ -18,21 +18,65 @@ import { IngredientItem } from "./Ingredient";
 import { PreparationStep } from "./PreparationStep";
 import { ShareButton } from "./ShareButton";
 import { CopyButton } from "./CopyButton";
+import { useExpiringLocalStorage } from "./useExpiringLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
+
+export const TWELVE_HOURS_IN_MILLIS = 12 * 60 * 60 * 1000;
 
 type RecipeDisplayProps = {
   recipe: Recipe;
   cookMode: boolean;
   cookModeOn: boolean;
-  onCookModeChange: React.ChangeEventHandler<HTMLInputElement>;
+  onCookModeChange: (checked: boolean) => void;
 };
 
+function initializeCheckedState<T>(
+  iterable: T[],
+  idFn: (item: T, index: number) => string,
+  prevState: Record<string, boolean> = {}
+): Record<string, boolean> {
+  const newState: Record<string, boolean> = {};
+
+  iterable.forEach((item, index) => {
+    let id = idFn(item, index);
+    newState[id] = prevState[id] ?? false;
+  });
+
+  return newState;
+}
+
 export function RecipeDisplay(props: RecipeDisplayProps) {
-  let [multiplier, setMultiplier] = useState(1);
+  let [multiplier, setMultiplier] = useExpiringLocalStorage(
+    `${getRecipeId(props.recipe)}-multiplier`,
+    props.recipe,
+    1,
+    TWELVE_HOURS_IN_MILLIS
+  );
   let [lockIngredients, setLockIngredients] = useState(false);
-  let [weightMode, setWeightMode] = useState(
+  let [weightMode, setWeightMode] = useLocalStorage(
+    `${getRecipeId(props.recipe)}-weight-mode`,
     props.recipe.defaultMeasurement === "weight"
   );
+  let [checkedIngredients, setCheckedIngredients] = useExpiringLocalStorage<
+    Record<string, boolean>, Recipe
+  >(
+    `${getRecipeId(props.recipe)}-ingredients`,
+    props.recipe,
+    () => initializeCheckedState(props.recipe.ingredients, getIngredientId),
+    TWELVE_HOURS_IN_MILLIS
+  );
+  let [checkedSteps, setCheckedSteps] = useExpiringLocalStorage<
+    Record<string, boolean>, Recipe
+  >(
+    `${getRecipeId(props.recipe)}-steps`,
+    props.recipe,
+    () => initializeCheckedState(props.recipe.steps, getStepId),
+    TWELVE_HOURS_IN_MILLIS
+  );
   let id = getRecipeId(props.recipe);
+
+  let stepsCompleted = Object.values(checkedSteps).every(Boolean);
+
   return (
     <div
       id={`${getRecipeId(props.recipe)}-container`}
@@ -118,7 +162,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
               uncheckedIcon={cart}
               aria-label="cook-mode"
               checked={props.cookMode}
-              onChange={props.onCookModeChange}
+              onChange={(event) => props.onCookModeChange(event.target.checked)}
             />
             Cook mode
           </label>
@@ -151,8 +195,25 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
       <div>
         {props.recipe.ingredients.length > 0 && (
           <>
-            <div className="flex items-center gap-s">
-              <h3 className="inline-flex">Ingredients</h3>
+            <div className="flex items-baseline gap-m">
+              <h3>Ingredients</h3>
+              <button
+                className={`link slide-in-from-right ${
+                  props.cookMode &&
+                  Object.values(checkedIngredients).some(Boolean)
+                    ? "visible"
+                    : ""
+                }`}
+                onClick={() =>
+                  setCheckedIngredients((prevState) =>
+                    Object.fromEntries(
+                      Object.keys(prevState).map((key) => [key, false])
+                    )
+                  )
+                }
+              >
+                Clear
+              </button>
             </div>
             <ul
               className={`ingredients flex flex-col gap-xs p-s ${
@@ -160,29 +221,66 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
               }`}
               style={{ top: "-2" }}
             >
-              {props.recipe.ingredients.map((ingredient) => {
+              {props.recipe.ingredients.map((ingredient, index) => {
+                let id = getIngredientId(ingredient, index);
                 return (
                   <IngredientItem
                     key={`${ingredient.name}${ingredient.quantity}${ingredient.measurement}`}
+                    checked={checkedIngredients[id]}
                     ingredient={ingredient}
                     cookMode={props.cookMode}
                     multiplier={multiplier}
                     weightMode={weightMode}
+                    onChange={(e) =>
+                      props.cookMode &&
+                      setCheckedIngredients((prevState) => ({
+                        ...prevState,
+                        [id]: e.target.checked,
+                      }))
+                    }
                   />
                 );
               })}
             </ul>
           </>
         )}
-        <h3>Preparation</h3>
-        <ol className="flex flex-col gap-xs p-s">
+        <div className="flex gap-m items-baseline">
+          <h3>Preparation</h3>
+          <button
+            className={`link slide-in-from-right ${
+              props.cookMode && Object.values(checkedSteps).some(Boolean)
+                ? "visible"
+                : ""
+            }`}
+            onClick={() =>
+              setCheckedSteps((prevState) =>
+                Object.fromEntries(
+                  Object.keys(prevState).map((key) => [key, false])
+                )
+              )
+            }
+          >
+            Clear
+          </button>
+        </div>
+        <ol className={`flex flex-col gap-xs p-s ${stepsCompleted ? "steps-completed" : ""}`}>
           {props.recipe.steps.map((step, index) => {
+            let id = getStepId(step, index);
             return (
               <PreparationStep
                 key={step}
+                style={{animationDelay: `${(props.recipe.steps.length - index - 1) * 0.1}s`}}
                 step={step}
                 cookMode={props.cookMode}
                 number={index + 1}
+                checked={checkedSteps[id]}
+                onChange={(e) =>
+                  props.cookMode &&
+                  setCheckedSteps((prevState) => ({
+                    ...prevState,
+                    [id]: e.target.checked,
+                  }))
+                }
               />
             );
           })}

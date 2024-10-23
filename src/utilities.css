@@ -24,6 +24,10 @@
   align-items: flex-start;
 }
 
+.items-baseline {
+  align-items: baseline;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }

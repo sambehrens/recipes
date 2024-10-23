@@ -26,7 +26,7 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
     }
   };
 
-  const [storedValue, setStoredValue] = useState(readValue);
+  const [storedValue, setStoredValue] = useState(initial());
 
   const setValue = (value: T | ((old: T) => T)) => {
     try {

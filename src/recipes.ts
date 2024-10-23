@@ -102,6 +102,14 @@ export function getRecipeId(recipe: Recipe) {
   return recipe.title.split(" ").join("-");
 }
 
+export function getIngredientId(ingredient: Ingredient, index: number) {
+  return `${index}-${ingredient.quantity}${ingredient.measurement}${ingredient.name}${ingredient.scaler}`;
+}
+
+export function getStepId(step: string, index: number) {
+  return `${index}-${step}`;
+}
+
 export const recipes: Recipe[] = [
   {
     title: "Jasmine Rice (Instant-Pot)",
@@ -1358,9 +1366,29 @@ export const recipes: Recipe[] = [
         scaler: Scaler.Multiply,
       },
       {
+        quantity: 2,
+        measurement: "pound",
+        name: "fresh, ripe plum tomatoes, OR canned (quantity below)",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 900,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2,
+        measurement: "cup",
+        name: "canned imported Italian whole, peeled tomatoes (like San Marzano), cut up, with their juice, OR fresh (quantity above)",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 480,
+          measurement: "gram",
+        },
+      },
+      {
         quantity: 1,
         measurement: "count",
-        name: "28 oz can of San Marzano whole peeled tomatoes",
+        name: "medium onion, halved",
         scaler: Scaler.Multiply,
       },
       {
@@ -1368,6 +1396,10 @@ export const recipes: Recipe[] = [
         measurement: "tablespoon",
         name: "butter",
         scaler: Scaler.Multiply,
+        weight: {
+          quantity: 70,
+          measurement: "gram",
+        },
       },
       {
         quantity: 4,
@@ -1378,26 +1410,29 @@ export const recipes: Recipe[] = [
       {
         quantity: 0,
         measurement: "noQuantity",
-        name: "pepper",
+        name: "freshly ground black pepper",
         scaler: Scaler.Constant,
       },
       {
         quantity: 0,
         measurement: "noQuantity",
-        name: "grated Parmesan cheese",
+        name: "freshly grated Parmesan cheese",
         scaler: Scaler.Constant,
       },
     ],
     steps: [
-      "Combine the tomatoes, their juices, the butter and the onion halves in a saucepan. Add half the salt.",
+      "For fresh tomatoes, wash them in cold water, cut them lengthwise in half, and put them in a covered saucepan.",
+      "Turn on the heat to medium and cook for 10 minutes.",
+      "Set a food mill fitted with the disk with the largest holes over a bowl. Transfer the tomatoes with any of their juices to the mill and puree.",
+      "Combine the prepared tomatoes or canned tomatoes, the butter and the onion halves in a saucepan. Add half the salt.",
       "Place over medium heat and bring to a simmer.",
-      "Cook, uncovered, for about 45 minutes. Stir occasionally, mashing any large pieces of tomato with a spoon.",
+      "Cook, uncovered, at a very low simmer, for about 45 minutes. Stir occasionally, mashing any large pieces of tomato with the back of a wooden spoon.",
       "Add salt as needed.",
       "While the sauce cooks, boil a pot of water with half the remaining salt for the gnocchi.",
       "Once the pot has come to a boil, add the gnocci.",
       "Gnocchi cooks quickly. As they float to the top, remove them from the water and place them into a pasta bowl.",
       "Discard the onion from the sauce before tossing the sauce with pasta.",
-      "Serve with grated Parmesan cheese and bread.",
+      "Serve with grated Parmesan cheese, freshly ground black pepper, and bread.",
     ],
   },
   {

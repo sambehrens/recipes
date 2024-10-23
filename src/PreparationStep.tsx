@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { CSSProperties, ChangeEventHandler } from "react";
 import {
   NumberedCheckbox,
   NumberedCheckboxListReplacement,
@@ -8,18 +8,20 @@ type PreparationStepProps = {
   cookMode: boolean;
   number: number;
   step: string;
+  checked: boolean;
+  style?: CSSProperties;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export function PreparationStep(props: PreparationStepProps) {
-  let [checked, setChecked] = useState(false);
   return (
-    <li className="inline-flex items-start gap-s flex-wrap text-base">
-      <label className={`inline-flex items-start gap-s no-webkit-highlight text-base ${props.cookMode && checked ? "strike" : ""}`}>
+    <li className="inline-flex items-start gap-s flex-wrap text-base" style={props.style}>
+      <label className={`inline-flex items-start gap-s no-webkit-highlight text-base ${props.cookMode && props.checked ? "strike" : ""}`}>
         {props.cookMode ? (
           <NumberedCheckbox
             number={props.number}
-            checked={checked}
-            onChange={(e) => props.cookMode && setChecked(e.target.checked)}
+            checked={props.checked}
+            onChange={props.onChange}
           />
         ) : (
           <NumberedCheckboxListReplacement>

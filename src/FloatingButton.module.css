@@ -7,7 +7,6 @@
   align-items: flex-end;
   border-top-left-radius: 0.625rem;
   border-bottom-left-radius: 0.625rem;
-  /* box-shadow: var(--box-shadow-medium); */
 
   .animatedLink {
     --animation-duration: 200ms;

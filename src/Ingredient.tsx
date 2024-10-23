@@ -1,19 +1,20 @@
 import Fraction from "fraction.js";
 import { Ingredient, Measurement, Scaler } from "./recipes";
 import { Checkbox, CheckboxListReplacement } from "./Checkbox";
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import { Icon } from "./Icon";
 import { filledCircle } from "./icons";
 
 type IngredientItemProps = {
+  checked: boolean;
   ingredient: Ingredient;
   cookMode: boolean;
   multiplier: number;
   weightMode: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export function IngredientItem(props: IngredientItemProps) {
-  let [checked, setChecked] = useState(false);
   let quantityToUse =
     props.weightMode && props.ingredient.weight
       ? props.ingredient.weight.quantity
@@ -38,13 +39,13 @@ export function IngredientItem(props: IngredientItemProps) {
     <li className="inline-flex items-start flex-wrap text-base">
       <label
         className={`inline-flex items-start gap-s no-webkit-highlight text-base ${
-          props.cookMode && checked ? "strike" : ""
+          props.cookMode && props.checked ? "strike" : ""
         }`}
       >
         {props.cookMode ? (
           <Checkbox
-            checked={checked}
-            onChange={(e) => props.cookMode && setChecked(e.target.checked)}
+            checked={props.checked}
+            onChange={props.onChange}
           />
         ) : (
           <CheckboxListReplacement>

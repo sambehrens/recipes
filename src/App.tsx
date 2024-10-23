@@ -1,8 +1,8 @@
 import "./App.css";
 import "./utilities.css";
 import { Recipe, categories, getRecipeId, recipes } from "./recipes";
-import { RecipeDisplay } from "./RecipeDisplay";
-import { useEffect, useState } from "react";
+import { RecipeDisplay, TWELVE_HOURS_IN_MILLIS } from "./RecipeDisplay";
+import { useEffect } from "react";
 import { NestedCategoryTree } from "./NestedCategoryTree";
 import { buildNestedCategoryTree } from "./buildNestedCategoryTree";
 import { Icon } from "./Icon";
@@ -10,11 +10,16 @@ import { info } from "./icons";
 import { useWakeLock } from "./useWakeLock";
 import { SearchBar, sortedRecipes } from "./SearchBar";
 import { FloatingButton } from "./FloatingButton";
+import { useExpiringLocalStorage } from "./useExpiringLocalStorage";
+import {CompleteScreen} from "./CompleteScreen";
 
 const nestedCategoryTree = buildNestedCategoryTree(recipes, categories);
 
 function App() {
-  let [cookModeRecipes, setCookModeRecipes] = useState<Recipe[]>([]);
+  let [cookModeRecipes, setCookModeRecipes] = useExpiringLocalStorage<
+    string[],
+    null
+  >("cook-mode-recipes", null, [], TWELVE_HOURS_IN_MILLIS);
   let { isWakeLockActive, requestWakeLock, releaseWakeLock } = useWakeLock();
 
   useEffect(() => {
@@ -63,13 +68,13 @@ function App() {
           <RecipeDisplay
             key={getRecipeId(recipe)}
             recipe={recipe}
-            cookMode={cookModeRecipes.includes(recipe)}
+            cookMode={cookModeRecipes.includes(getRecipeId(recipe))}
             cookModeOn={cookModeRecipes.length !== 0}
-            onCookModeChange={() =>
+            onCookModeChange={(checked) =>
               setCookModeRecipes((current) =>
-                current.includes(recipe)
-                  ? current.filter((r) => r !== recipe)
-                  : current.concat([recipe])
+                checked
+                  ? current.concat([getRecipeId(recipe)])
+                  : current.filter((r) => r !== getRecipeId(recipe))
               )
             }
           />
@@ -94,7 +99,13 @@ function App() {
           </p>
         </div>
       </div>
-      <FloatingButton cookModeRecipes={cookModeRecipes} />
+      <FloatingButton
+        cookModeRecipes={
+          cookModeRecipes
+            .map((id) => recipes.find((r) => getRecipeId(r) === id))
+            .filter(Boolean) as Recipe[]
+        }
+      />
     </div>
   );
 }
