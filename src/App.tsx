@@ -11,7 +11,6 @@ import { useWakeLock } from "./useWakeLock";
 import { SearchBar, sortedRecipes } from "./SearchBar";
 import { FloatingButton } from "./FloatingButton";
 import { useExpiringLocalStorage } from "./useExpiringLocalStorage";
-import {CompleteScreen} from "./CompleteScreen";
 
 const nestedCategoryTree = buildNestedCategoryTree(recipes, categories);
 

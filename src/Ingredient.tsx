@@ -1,7 +1,7 @@
 import Fraction from "fraction.js";
 import { Ingredient, Measurement, Scaler } from "./recipes";
 import { Checkbox, CheckboxListReplacement } from "./Checkbox";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler } from "react";
 import { Icon } from "./Icon";
 import { filledCircle } from "./icons";
 
