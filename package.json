@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/canvas-confetti": "^1.6.4",
+    "canvas-confetti": "^1.9.3",
     "fraction.js": "^5.0.6",
     "fuse.js": "^7.0.0",
     "react": "^18",

@@ -1,3 +1,4 @@
+import confetti from "canvas-confetti";
 import { Fragment, useEffect, useState } from "react";
 import { Recipe, getIngredientId, getRecipeId, getStepId } from "./recipes";
 import { Icon } from "./Icon";
@@ -81,6 +82,14 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
 
   useEffect(() => {
     if (stepsCompleted) {
+      confetti({
+        particleCount: 200,
+        spread: 55,
+        origin: { x: 0.5, y: 1 },
+        colors: ["#E76F51", "#F4A261", "#E9C46A", "#2A9D8F"],
+        disableForReducedMotion: true,
+      });
+
       const timer = setTimeout(() => {
         setCheckedIngredients((prevState) =>
           Object.fromEntries(Object.keys(prevState).map((key) => [key, false]))
