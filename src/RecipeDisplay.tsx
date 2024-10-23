@@ -84,6 +84,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
     if (stepsCompleted) {
       confetti({
         particleCount: 200,
+        ticks: 100,
         spread: 55,
         origin: { x: 0.5, y: 1 },
         colors: ["#E76F51", "#F4A261", "#E9C46A", "#2A9D8F"],
