@@ -58,7 +58,8 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
     props.recipe.defaultMeasurement === "weight"
   );
   let [checkedIngredients, setCheckedIngredients] = useExpiringLocalStorage<
-    Record<string, boolean>, Recipe
+    Record<string, boolean>,
+    Recipe
   >(
     `${getRecipeId(props.recipe)}-ingredients`,
     props.recipe,
@@ -66,7 +67,8 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
     TWELVE_HOURS_IN_MILLIS
   );
   let [checkedSteps, setCheckedSteps] = useExpiringLocalStorage<
-    Record<string, boolean>, Recipe
+    Record<string, boolean>,
+    Recipe
   >(
     `${getRecipeId(props.recipe)}-steps`,
     props.recipe,
@@ -76,6 +78,22 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
   let id = getRecipeId(props.recipe);
 
   let stepsCompleted = Object.values(checkedSteps).every(Boolean);
+
+  useEffect(() => {
+    if (stepsCompleted) {
+      const timer = setTimeout(() => {
+        setCheckedIngredients((prevState) =>
+          Object.fromEntries(Object.keys(prevState).map((key) => [key, false]))
+        );
+        setCheckedSteps((prevState) =>
+          Object.fromEntries(Object.keys(prevState).map((key) => [key, false]))
+        );
+        props.onCookModeChange(false);
+      }, getAnimationDurationInMillis(props.recipe.steps.length));
+
+      return () => clearTimeout(timer);
+    }
+  }, [stepsCompleted, props.recipe.steps.length]);
 
   return (
     <div
@@ -263,13 +281,22 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
             Clear
           </button>
         </div>
-        <ol className={`flex flex-col gap-xs p-s ${stepsCompleted ? "steps-completed" : ""}`}>
+        <ol
+          className={`flex flex-col gap-xs p-s ${
+            stepsCompleted ? "steps-completed" : ""
+          }`}
+        >
           {props.recipe.steps.map((step, index) => {
             let id = getStepId(step, index);
             return (
               <PreparationStep
                 key={step}
-                style={{animationDelay: `${(props.recipe.steps.length - index - 1) * 0.1}s`}}
+                style={{
+                  animationDelay: `${
+                    (props.recipe.steps.length - index - 1) *
+                    Math.min(1 / props.recipe.steps.length, 0.1)
+                  }s`,
+                }}
                 step={step}
                 cookMode={props.cookMode}
                 number={index + 1}
@@ -300,4 +327,8 @@ function getUrlWithoutHash(): string {
   const url = new URL(urlString);
   url.hash = "";
   return url.toString();
+}
+
+function getAnimationDurationInMillis(numberOfSteps: number): number {
+  return (Math.min(1 / numberOfSteps, 0.1) * (numberOfSteps - 1) + 0.5) * 1000;
 }

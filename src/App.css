@@ -17,7 +17,7 @@
   opacity: 0;
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
   pointer-events: none;
-  
+
   &.visible {
     transform: translateX(0);
     opacity: 1;
@@ -48,9 +48,13 @@
   box-shadow: 0 2px #ddd;
 }
 
-.steps-completed li {
-   animation: bounce 500ms ease-in-out forwards;
-   will-change: transform;
+.steps-completed {
+  overflow: hidden;
+
+  li {
+    animation: bounce 500ms ease-in-out forwards;
+    will-change: transform;
+  }
 }
 
 @keyframes bounce {
