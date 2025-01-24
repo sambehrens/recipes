@@ -2007,4 +2007,67 @@ export const recipes: Recipe[] = [
       "Let cool slightly before serving.",
     ],
   },
+  {
+    title: "Mom and Reba’s Eggnog",
+    categories: ["Drinks", "Cocktails"],
+    source: "https://altonbrown.com/recipes/eggnog/",
+    ingredients: [
+      {
+        quantity: 4,
+        measurement: "count",
+        name: "large eggs, yolks and whites separated",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.33,
+        measurement: "cup",
+        name: "sugar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "sugar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "cup",
+        name: "whole milk",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "heavy cream",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1.25,
+        measurement: "ounce",
+        name: "bourbon",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1.25,
+        measurement: "ounce",
+        name: "dark rum",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "freshly grated nutmeg",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "In the bowl of a stand mixer, beat the egg yolks and 1/3 cup of sugar until the yolks lighten in color and the sugar is completely dissolved.",
+      "Add the milk, cream, bourbon, rum, and nutmeg to the yolk mixture and stir to combine. Transfer the mixture to a medium mixing bowl and set aside.",
+      "Clean the stand mixer bowl and beat the egg whites to soft peaks.",
+      "With the mixer still running, gradually add the remaining 1 tablespoon of sugar and beat until stiff peaks form.",
+      "Gently fold the beaten egg whites into the yolk mixture.",
+      "Chill the eggnog before serving. It can be stored in the refrigerator indefinitely.",
+    ],
+  },
 ];
