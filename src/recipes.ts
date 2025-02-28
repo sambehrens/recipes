@@ -2070,4 +2070,68 @@ export const recipes: Recipe[] = [
       "Chill the eggnog before serving. It can be stored in the refrigerator indefinitely.",
     ],
   },
+  {
+    title: "Egg Casserole",
+    categories: ["Casserole"],
+    ingredients: [
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "dried bread crumbs",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "butter (for sautéing bread crumbs)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "tablespoon",
+        name: "butter (for white sauce)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "tablespoon",
+        name: "flour",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "cup",
+        name: "milk",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 4,
+        measurement: "count",
+        name: "slices of sharp cheddar cheese",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 10,
+        measurement: "count",
+        name: "hard boiled eggs, sliced (best if boiled a day early and refrigerated)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "package of dried beef or ham, sliced",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Preheat the oven to 350°F and grease a 12x8-inch pan.",
+      "In a skillet over medium heat, melt the butter for the bread crumbs. Add the bread crumbs and sauté until golden brown. Set aside.",
+      "Prepare the white sauce (béchamel): Melt the butter for the white sauce in a saucepan over medium heat. Stir in the flour and let it bubble for 1-2 minutes. Gradually whisk in the milk to avoid lumps. Bring to a simmer and cook until thickened.",
+      "Melt the cheddar cheese into the white sauce and stir until combined.",
+      "Layer the sliced eggs, meat, and half of the sautéed bread crumbs in the prepared pan.",
+      "Pour the cheese-infused white sauce over the layered ingredients.",
+      "Sprinkle the remaining sautéed bread crumbs on top.",
+      "Bake for about 25 minutes, or until the casserole is bubbly and heated through.",
+    ],
+  },
 ];
