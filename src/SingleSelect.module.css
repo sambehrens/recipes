@@ -10,6 +10,8 @@
   background-color: transparent;
   color: var(--text-color-primary);
   font-size: 0.9rem;
+  /* disable double tap to zoom */
+  touch-action: manipulation;
 }
 
 .singleSelectButton:hover {
