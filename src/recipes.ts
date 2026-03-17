@@ -2218,4 +2218,88 @@ export const recipes: Recipe[] = [
       "Let cool for 2 minutes before serving.",
     ],
   },
+  {
+    title: "Asian Cucumber Salad",
+    categories: ["Salad"],
+    ingredients: [
+      {
+        quantity: 2,
+        measurement: "count",
+        name: "large cucumbers",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "count",
+        name: "garlic cloves, minced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "teaspoon",
+        name: "fresh ginger, grated",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "count",
+        name: "green onions, thinly sliced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "toasted sesame seeds",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "noQuantity",
+        name: "fresh cilantro or chili flakes (optional)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "tablespoon",
+        name: "rice vinegar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "soy sauce",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "sesame oil",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "sugar or honey",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "chili oil (adjust to taste, can substitute sriracha or gochujang)",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Slice cucumbers into thin rounds. Toss with salt and let sit in a colander for 20–30 minutes to draw out water. Pat dry.",
+      "Whisk together the rice vinegar, soy sauce, sesame oil, sugar, and chili oil until the sugar dissolves.",
+      "Toss the cucumbers with the garlic, ginger, and dressing. Mix well.",
+      "Top with the green onions, sesame seeds, and cilantro. Serve immediately or chill for 15 minutes for deeper flavor.",
+    ],
+  },
 ];
