@@ -4,7 +4,6 @@ export type Recipe = {
   steps: string[];
   categories: Category[];
   source?: string;
-  notes?: string;
   defaultMeasurement?: "weight";
 };
 
@@ -2300,6 +2299,48 @@ export const recipes: Recipe[] = [
       "Whisk together the rice vinegar, soy sauce, sesame oil, sugar, and chili oil until the sugar dissolves.",
       "Toss the cucumbers with the garlic, ginger, and dressing. Mix well.",
       "Top with the green onions, sesame seeds, and cilantro. Serve immediately or chill for 15 minutes for deeper flavor.",
+    ],
+  },
+  {
+    title: "Pickled Onions",
+    categories: ["Miscellaneous"],
+    ingredients: [
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "red onion, thinly sliced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "warm water",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1.5,
+        measurement: "tablespoon",
+        name: "sugar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "coarse salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.75,
+        measurement: "cup",
+        name: "apple cider vinegar",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Place the sliced onion in a large jar or cup.",
+      "In a small bowl, whisk together the warm water, sugar, and salt until dissolved. Whisk in the apple cider vinegar.",
+      "Pour the vinegar mixture over the onion. Let sit at room temperature, loosely covered, for 30 minutes to 1 hour.",
+      "Store in a sealed container or jar in the fridge for up to a week.",
     ],
   },
 ];
