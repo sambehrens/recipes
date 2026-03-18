@@ -80,6 +80,7 @@ export const categories = [
   "Dressing",
   "Rice",
   "Sauces",
+  "Condiments",
   "Drinks",
   "Cocktails",
   "Dessert",
@@ -1758,7 +1759,7 @@ export const recipes: Recipe[] = [
   },
   {
     title: "Grace's Hot Sweet Mustard",
-    categories: ["Sauces"],
+    categories: ["Condiments", "Sauces"],
     ingredients: [
       {
         quantity: 1,
@@ -1804,7 +1805,7 @@ export const recipes: Recipe[] = [
   },
   {
     title: "Tartar Sauce",
-    categories: ["Sauces"],
+    categories: ["Condiments", "Sauces"],
     ingredients: [
       {
         quantity: 0.5,
@@ -2303,7 +2304,7 @@ export const recipes: Recipe[] = [
   },
   {
     title: "Pickled Onions",
-    categories: ["Miscellaneous"],
+    categories: ["Condiments"],
     ingredients: [
       {
         quantity: 1,
