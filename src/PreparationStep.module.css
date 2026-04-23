@@ -1,0 +1,23 @@
+.timerButton {
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--accent-color);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  line-height: inherit;
+}
+
+@media (hover: hover) {
+  .timerButton:hover {
+    color: #B24A3B;
+    text-decoration: underline;
+  }
+}
+
+.timerButton:active {
+  color: #8E3A30;
+}

@@ -93,8 +93,20 @@ function App() {
           <p className="text-s">
             <Icon icon={info} /> This website uses a Siri Shortcut to add
             ingredients to my grocery list in the Apple Reminders app. If you
-            are also on an Apple device, you can create a shortcut of the same
-            name: "Add To Grocery List", and take advantage of this feature.
+            are also on an Apple device, you can{" "}
+            <a href="https://www.icloud.com/shortcuts/66533769a0314d5387f5e33956188f33">
+              get the shortcut here
+            </a>
+            .
+          </p>
+          <p className="text-s">
+            <Icon icon={info} /> Recipe steps with tappable times use a Siri
+            Shortcut named "Start Timer" to start a timer in the Clock app. You
+            can{" "}
+            <a href="https://www.icloud.com/shortcuts/bf26aa2a9fa744b6a5a841b1b3d9a9f9">
+              get the shortcut here
+            </a>
+            .
           </p>
         </div>
       </div>
