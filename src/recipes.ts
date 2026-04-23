@@ -2219,6 +2219,120 @@ export const recipes: Recipe[] = [
     ],
   },
   {
+    title: "Powdered Donut Cake",
+    categories: ["Dessert"],
+    ingredients: [
+      {
+        quantity: 0.75,
+        measurement: "cup",
+        name: "granulated sugar",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 150,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2,
+        measurement: "count",
+        name: "large eggs",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "sour cream",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 220,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "unsalted butter, melted",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 113,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1.25,
+        measurement: "teaspoon",
+        name: "freshly grated nutmeg",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "teaspoon",
+        name: "vanilla extract",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.75,
+        measurement: "teaspoon",
+        name: "kosher salt",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1.5,
+        measurement: "cup",
+        name: "all-purpose flour",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 190,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1.5,
+        measurement: "teaspoon",
+        name: "baking powder",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.25,
+        measurement: "teaspoon",
+        name: "baking soda",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "unsalted butter, melted (for topping)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "tablespoon",
+        name: "confectioners' sugar (for topping)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "granulated sugar (for cinnamon sugar variation, optional)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "teaspoon",
+        name: "ground cinnamon (for cinnamon sugar variation, optional)",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Position a rack in the center of your oven and preheat the oven to 350°F. Butter or coat an 8-inch square baking pan with nonstick spray. Line the pan with a strip of parchment paper that hangs over two of the edges.",
+      "In a large bowl, whisk the granulated sugar and eggs until pale and foamy, about 1 minute. Add the sour cream, butter, nutmeg, vanilla, and salt. Whisk until smooth and emulsified.",
+      "Add the flour, baking powder, and baking soda. Whisk until well-combined and smooth.",
+      "Pour the batter into the pan and bake until puffed and golden, and a skewer inserted into the center comes out clean, 25 to 35 minutes. Set the pan on a rack to cool for about 15 minutes. Then use the parchment paper to lift the cake out of the pan and set it on the rack to cool almost completely.",
+      "While the cake is just warm to the touch, brush the top with the melted butter and dust generously with the confectioners' sugar. Store covered at room temperature for up to three days. The cake may need a fresh dusting of confectioners' sugar after the second day.",
+      "Flavor variations — Browned Butter: Brown the butter before proceeding with the recipe as written. Cinnamon Sugar: Brush the cake with melted butter, then sprinkle a combination of granulated sugar and ground cinnamon over the top instead of confectioners' sugar.",
+    ],
+  },
+  {
     title: "Asian Cucumber Salad",
     categories: ["Salad"],
     ingredients: [
