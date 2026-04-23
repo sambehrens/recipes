@@ -51,6 +51,7 @@
   cursor: pointer;
   border: none;
   flex-shrink: 0;
+  touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -78,11 +79,13 @@
   min-height: 3rem;
   border-radius: 0.5rem;
   background-color: var(--background-color-secondary);
+  color: var(--text-color-primary);
   border: 2px solid transparent;
   font-size: 0.875rem;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
+  touch-action: manipulation;
   transition: border-color 150ms, background-color 150ms;
 }
 
@@ -106,11 +109,13 @@
   min-height: 3rem;
   border-radius: 0.5rem;
   background-color: var(--background-color-secondary);
+  color: var(--text-color-primary);
   border: none;
   font-size: 1rem;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -130,6 +135,7 @@
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
+  touch-action: manipulation;
   text-decoration: none;
   display: flex;
   align-items: center;
