@@ -2219,7 +2219,7 @@ export const recipes: Recipe[] = [
     ],
   },
   {
-    title: "Powdered Donut Cake",
+    title: "Donut Snacking Cake",
     categories: ["Dessert"],
     ingredients: [
       {
