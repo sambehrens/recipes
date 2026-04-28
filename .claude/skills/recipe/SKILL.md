@@ -12,6 +12,7 @@ Add a new recipe to `/Users/sambehrens/Documents/repos/recipes/src/recipes.ts`.
 - **No measurements in steps** — steps never include specific quantities ("the flour", not "2 cups of flour"). Quantities live only in the ingredients list.
 - **Timer tokens** — any concrete timer-able time reference in a step should use `{label|duration}` inline. Label is 1–3 words. Examples: `{Bake|25-35 minutes}`, `{Rest|30 minutes}`, `{Marinate|3 hours}`. Do NOT wrap intervals ("every 5 minutes") or vague times ("a few minutes").
 - **Scaler** — use `Scaler.Multiply` for quantities that scale with servings. Use `Scaler.Constant` with `quantity: 0, measurement: "noQuantity"` for seasoning-to-taste items (salt, pepper, oil).
+- **Salt and pepper** — always list as two separate ingredients, never combined into one.
 - **Placement** — append the new recipe object just before the closing `];` at the end of the `recipes` array.
 - **Step granularity** — each step should be one complete action. Small side actions (e.g. wiping out a skillet, transferring to a bowl) can stay attached to the main step they follow. Split steps where the cook must shift focus or technique — don't bundle unrelated actions into one step.
 

@@ -2470,25 +2470,31 @@ export const recipes: Recipe[] = [
       {
         quantity: 0,
         measurement: "noQuantity",
-        name: "canola or vegetable oil",
+        name: "avocado or olive oil",
         scaler: Scaler.Constant,
       },
       {
         quantity: 1,
         measurement: "pound",
-        name: "ground beef",
+        name: "ground beef or ground turkey",
         scaler: Scaler.Multiply,
       },
       {
         quantity: 0.25,
         measurement: "cup",
-        name: "yellow onion, coarsely grated",
+        name: "yellow onion, coarsely grated or diced",
         scaler: Scaler.Multiply,
       },
       {
         quantity: 0,
         measurement: "noQuantity",
-        name: "salt and pepper",
+        name: "salt",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "pepper",
         scaler: Scaler.Constant,
       },
       {
@@ -2512,7 +2518,7 @@ export const recipes: Recipe[] = [
       {
         quantity: 1,
         measurement: "teaspoon",
-        name: "ancho chile powder (or ½ tsp cayenne pepper)",
+        name: "ancho chile powder or 1/4 that amount of cayenne",
         scaler: Scaler.Multiply,
       },
       {
@@ -2530,19 +2536,19 @@ export const recipes: Recipe[] = [
       {
         quantity: 4,
         measurement: "teaspoon",
-        name: "adobo sauce (from 1 can chipotles in adobo), or hot sauce to taste",
+        name: "adobo sauce (from a can chipotles in adobo), or hot sauce to taste",
         scaler: Scaler.Multiply,
       },
       {
         quantity: 5,
         measurement: "count",
-        name: "extra-large (10-inch) burrito-size flour tortillas",
+        name: "extra-large (10-inch+) burrito-size flour tortillas",
         scaler: Scaler.Multiply,
       },
       {
         quantity: 1,
         measurement: "count",
-        name: "can (15 oz) black beans, drained and lightly mashed",
+        name: "15 oz can black beans, drained and lightly mashed",
         scaler: Scaler.Multiply,
       },
       {
