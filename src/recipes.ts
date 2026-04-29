@@ -2594,4 +2594,41 @@ export const recipes: Recipe[] = [
       "Serve immediately with hot sauce and the remaining spicy sour cream.",
     ],
   },
+  {
+    title: "Baked Potatoes",
+    categories: ["Miscellaneous"],
+    source: "https://cooking.nytimes.com/recipes/1016869-baked-potatoes",
+    ingredients: [
+      {
+        quantity: 4,
+        measurement: "count",
+        name: "large baking potatoes, like russets",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "olive oil",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "salt",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 4,
+        measurement: "tablespoon",
+        name: "unsalted butter",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Preheat oven to 450.",
+      "Scrub potatoes under running water; dry them, and rub the skin of each with the oil and a little salt. Pierce the skin of each in three or four places with the tines of a fork.",
+      "Place the potatoes in the oven, and roast for {Roast potatoes|45-60 minutes}, depending on the size of the potatoes, until they offer no resistance when a knife is inserted in their centers.",
+      "Remove the potatoes from the oven, slice them open down the middle, apply a tablespoon of butter to each one and serve immediately.",
+    ],
+  },
 ];
