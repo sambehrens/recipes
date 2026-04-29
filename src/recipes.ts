@@ -80,6 +80,7 @@ export const categories = [
   "Salad",
   "Dressing",
   "Rice",
+  "Potatoes",
   "Condiments",
   "Sauces",
   "Drinks",
@@ -2596,7 +2597,7 @@ export const recipes: Recipe[] = [
   },
   {
     title: "Baked Potatoes",
-    categories: ["Miscellaneous"],
+    categories: ["Potatoes"],
     source: "https://cooking.nytimes.com/recipes/1016869-baked-potatoes",
     ingredients: [
       {
