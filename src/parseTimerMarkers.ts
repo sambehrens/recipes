@@ -117,5 +117,5 @@ export function getAdjustStep(seconds: number): number {
 }
 
 export function getMidpoint(minSeconds: number, maxSeconds: number): number {
-  return Math.round((minSeconds + maxSeconds) / 2 / 60) * 60;
+  return Math.floor((minSeconds + maxSeconds) / 2 / 60) * 60;
 }
