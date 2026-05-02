@@ -101,9 +101,9 @@ function App() {
           </p>
           <p className="text-s">
             <Icon icon={info} /> Recipe steps with tappable times use a Siri
-            Shortcut named "Start Timer" to start a timer in the Clock app. You
+            Shortcut named "Sam's Recipes Timer" to start a timer in the Clock app. You
             can{" "}
-            <a href="https://www.icloud.com/shortcuts/bf26aa2a9fa744b6a5a841b1b3d9a9f9">
+            <a href="https://www.icloud.com/shortcuts/4d2d540f0aa845dc81d62606169c35dd">
               get the shortcut here
             </a>
             .

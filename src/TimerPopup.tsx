@@ -10,10 +10,11 @@ import styles from "./TimerPopup.module.css";
 
 type TimerPopupProps = {
   token: TimerToken;
+  recipeTitle: string;
   onClose: () => void;
 };
 
-export function TimerPopup({ token, onClose }: TimerPopupProps) {
+export function TimerPopup({ token, recipeTitle, onClose }: TimerPopupProps) {
   const initialSeconds = token.isRange
     ? getMidpoint(token.minSeconds, token.maxSeconds)
     : token.minSeconds;
@@ -27,10 +28,8 @@ export function TimerPopup({ token, onClose }: TimerPopupProps) {
     ? `${token.label}: ${token.displayText}`
     : token.displayText;
 
-  const shortcutInput = token.label
-    ? `${currentSeconds}|${token.label}`
-    : `${currentSeconds}`;
-  const shortcutUrl = `shortcuts://run-shortcut?name=Start%20Timer&input=text&text=${encodeURIComponent(shortcutInput)}`;
+  const shortcutInput = `${currentSeconds}|${token.label ?? ""}|${recipeTitle}`;
+  const shortcutUrl = `shortcuts://run-shortcut?name=Sam%27s%20Recipes%20Timer&input=text&text=${encodeURIComponent(shortcutInput)}`;
 
   const presets = token.isRange
     ? [...new Set([token.minSeconds, getMidpoint(token.minSeconds, token.maxSeconds), token.maxSeconds])]

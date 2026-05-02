@@ -489,8 +489,8 @@ export const recipes: Recipe[] = [
     ],
     steps: [
       "Preheat oven to 425°F with one 12-inch ovenproof skillet, two 9-inch skillets, or similarly sized baking dishes inside.",
-      "In a large bowl or blender, beat eggs thoroughly with a whisk or fork.",
-      "Add salt and flour, whisk until lumps disappear. Add milk and whisk until smooth. If making a sweet version, add sugar or honey.",
+      "In a large bowl or blender, beat eggs thoroughly.",
+      "Add salt and flour, whisk until lumps disappear. Do not overmix. Add milk and whisk until smooth. If making a sweet version, add sugar or honey.",
       "When the oven and baking dishes are fully heated, carefully remove them. Melt the butter inside the skillet(s) and roll it around to coat the sides.",
       "Pour the batter into the buttered dish(es) and return them to the oven.",
       "Bake for {Bake|12-13 minutes}, then check in 1 to 2 minute increments until the edges are golden brown and the centers are just beginning to color.",

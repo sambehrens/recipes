@@ -311,6 +311,7 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
                 cookMode={props.cookMode}
                 number={index + 1}
                 checked={checkedSteps[id]}
+                recipeTitle={props.recipe.title}
                 onChange={(e) =>
                   props.cookMode &&
                   setCheckedSteps((prevState) => ({

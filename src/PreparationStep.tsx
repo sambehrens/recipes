@@ -12,6 +12,7 @@ type PreparationStepProps = {
   number: number;
   step: string;
   checked: boolean;
+  recipeTitle: string;
   style?: CSSProperties;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
@@ -60,7 +61,7 @@ export function PreparationStep(props: PreparationStepProps) {
         </div>
       </div>
       {activeTimer && (
-        <TimerPopup token={activeTimer} onClose={() => setActiveTimer(null)} />
+        <TimerPopup token={activeTimer} recipeTitle={props.recipeTitle} onClose={() => setActiveTimer(null)} />
       )}
     </li>
   );
