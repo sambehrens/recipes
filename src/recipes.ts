@@ -463,6 +463,12 @@ export const recipes: Recipe[] = [
         scaler: Scaler.Multiply,
       },
       {
+        quantity: 0.25,
+        measurement: "teaspoon",
+        name: "Kosher salt",
+        scaler: Scaler.Multiply,
+      },
+      {
         quantity: 0.5,
         measurement: "cup",
         name: "All-purpose flour",
@@ -472,12 +478,6 @@ export const recipes: Recipe[] = [
         quantity: 0.5,
         measurement: "cup",
         name: "Milk (ideally whole milk)",
-        scaler: Scaler.Multiply,
-      },
-      {
-        quantity: 0.25,
-        measurement: "teaspoon",
-        name: "Kosher salt",
         scaler: Scaler.Multiply,
       },
       {
