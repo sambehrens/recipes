@@ -2748,7 +2748,7 @@ export const recipes: Recipe[] = [
       "Boil on high for {High heat rice|5-7 minutes}.",
       "Reduce heat and simmer for {Low heat rice|10 minutes}. Even if it looks dry, do not add water.",
       "For socarrat: in the last minute, raise heat slightly. Listen closely for crackling and smell for a toasted aroma, pull off heat before it burns. Insert a spoon handle into the rice to the bottom of the pan to feel for socarrat formation.",
-      "Turn off heat. Cover with foil and kitchen towels and rest for {Rest|5-10 minutes}. Serve.",
+      "Turn off heat. Cover completely with foil to trap in the heat and rest for {Rest|5-10 minutes}. Serve.",
     ],
   },
 ];
