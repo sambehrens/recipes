@@ -27,7 +27,7 @@ export function IngredientItem(props: IngredientItemProps) {
     props.ingredient.scaler === Scaler.Multiply
       ? quantityToUse * props.multiplier
       : quantityToUse;
-  let quantity = new Fraction(rawQuantity).toFraction(true);
+  let quantity = new Fraction(rawQuantity).simplify(0.01).toFraction(true);
   let pluralized =
     rawQuantity > 1
       ? Measurement[measurementToUse].plural

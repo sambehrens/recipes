@@ -172,6 +172,9 @@ export function RecipeDisplay(props: RecipeDisplayProps) {
             <Radio checked={multiplier === 1} onSelect={() => setMultiplier(1)}>
               1x
             </Radio>
+            <Radio checked={multiplier === 1.5} onSelect={() => setMultiplier(1.5)}>
+              1.5x
+            </Radio>
             <Radio checked={multiplier === 2} onSelect={() => setMultiplier(2)}>
               2x
             </Radio>
