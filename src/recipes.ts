@@ -2655,12 +2655,6 @@ export const recipes: Recipe[] = [
         scaler: Scaler.Multiply,
       },
       {
-        quantity: 0.5,
-        measurement: "gram",
-        name: "saffron",
-        scaler: Scaler.Multiply,
-      },
-      {
         quantity: 4,
         measurement: "count",
         name: "artichoke hearts, cut into quarters",
@@ -2670,6 +2664,12 @@ export const recipes: Recipe[] = [
         quantity: 0.5,
         measurement: "pound",
         name: "fresh flat green beans, or use canned and drain",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "count",
+        name: "red bell pepper",
         scaler: Scaler.Multiply,
       },
       {
@@ -2685,9 +2685,15 @@ export const recipes: Recipe[] = [
         scaler: Scaler.Multiply,
       },
       {
-        quantity: 1.5,
+        quantity: 2,
         measurement: "teaspoon",
         name: "choricero pepper paste (Spanish sweet pepper paste or any mild, sweet pepper paste like mild red pepper paste)",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "tablespoon",
+        name: "tomatoe paste (optional substitute for choricero pepper paste)",
         scaler: Scaler.Multiply,
       },
       {
@@ -2697,7 +2703,7 @@ export const recipes: Recipe[] = [
         scaler: Scaler.Multiply,
       },
       {
-        quantity: 5.33,
+        quantity: 6,
         measurement: "cup",
         name: "chicken, vegetable or seafood stock",
         scaler: Scaler.Multiply,
@@ -2711,6 +2717,12 @@ export const recipes: Recipe[] = [
         measurement: "inch",
         name: "water",
         scaler: Scaler.Constant
+      },
+      {
+        quantity: 0.5,
+        measurement: "gram",
+        name: "saffron",
+        scaler: Scaler.Multiply,
       },
       {
         quantity: 2,
@@ -2738,9 +2750,9 @@ export const recipes: Recipe[] = [
     steps: [
       "Pour olive oil into the center of the pan and use it to level the pan. Heat on high. Sprinkle salt around the edges.",
       "Once oil is hot, sear chicken in the center until deeply golden without disturbing to build a crust, then push to the outer edges as each piece is done.",
-      "Sear artichoke hearts in the center until lightly browned, push to edges. Repeat with flat green beans.",
+      "Sear artichoke hearts in the center until lightly browned, push to edges. Repeat with flat green beans and red bell pepper.",
       "In the center, prepare the sofrito. Add grated tomato, pepper paste, and smoked paprika (add a splash more oil if needed). Stir-fry until reduced to a thick, dark paste.",
-      "Mix the chicken and vegetables into the sofrito and pour in the stock. Fold a small piece of foil over the edge of the pan to mark the top level of the stock. Add half an inch of water. Boil on high for about {Broth reduction|20-30 minutes} or until reduced back to the marked level.",
+      "Mix the chicken and vegetables into the sofrito and pour in the stock. Fold a small piece of foil over the edge of the pan to mark the top level of the stock. Add a quarter of an inch of water. Boil on high for about {Broth reduction|20-30 minutes} or until reduced back to the marked level to allow flavors to maximize.",
       "While broth reduces: wrap saffron in foil and toast both sides over a flame for a few seconds at a time, 1-2 times per side. Grind in a mortar, add some cold water and let it infuse while the water boils off.",
       "Once the liquid has reduced to the marked level, pour the saffron water mixture into the broth and mix.",
       "Taste broth — it should be slightly over-salted. Push the ingredients out of the way in an X pattern across the pan to create a channel for the rice. Pour rice into the X, then incorporate evenly into the pan going around each quarter. If manageable, lift the pan slightly and shake to incorporate the rice. Do not stir again.",
