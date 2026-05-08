@@ -88,6 +88,7 @@ export const categories = [
   "Potatoes",
   "Condiments",
   "Sauces",
+  "Tomato",
   "Drinks",
   "Cocktails",
   "Dessert",
@@ -2883,6 +2884,145 @@ export const recipes: Recipe[] = [
       "Tip the dough out onto a floured work surface, but don't add any flour to the top of the dough. Using a dough scraper or sharp knife, cut the dough into 4 equal portions.",
       "Take the first dough portion, flour your fingers, and grab each side. Pull the edges slightly outwards, then bring them towards the centre, crossing them over each other. Repeat on all sides until you have a tight dough ball shape. Flip the ball over and place it seam-side down on an un-floured section of work surface. Flour your hands and cup your palms around the dough ball. Gently move the ball around with your palms until it's smooth and round on all sides, then pick it up and pinch together the seam at the bottom to secure the shape. Repeat with the remaining dough portions.",
       "Coat each dough ball with a mixture of flour and semolina (if you have it). Place them on a liberally floured tray and cover with cling film. Proof at room temperature for {Final proof|2-3 hours}, until they have spread out and nearly doubled in size and are easy to stretch. On cold days this can take longer; on warm days less time.",
+    ],
+  },
+  {
+    title: "No-Cook Tomato Sauce",
+    categories: ["Sauces", "Tomato"],
+    ingredients: [
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "28-ounce can undrained peeled whole San Marzano tomatoes",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "garlic clove, finely minced or grated",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "kosher salt",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 3,
+        measurement: "tablespoon",
+        name: "extra-virgin olive oil",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "In a food processor, combine the tomatoes, garlic, salt, and olive oil. Puree until smooth. Taste and adjust with more salt if needed, then puree again. Transfer to a storage jar.",
+    ],
+  },
+  {
+    title: "Simple Tomato Sauce",
+    categories: ["Sauces", "Tomato"],
+    ingredients: [
+      {
+        quantity: 0.25,
+        measurement: "cup",
+        name: "extra-virgin olive oil",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 2,
+        measurement: "cup",
+        name: "finely chopped white or yellow onion",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 3,
+        measurement: "count",
+        name: "garlic cloves, minced",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "kosher salt",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "crushed red pepper flakes",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "white wine",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "count",
+        name: "28-ounce can undrained peeled whole San Marzano tomatoes",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "fresh basil leaves, packed",
+        scaler: Scaler.Multiply,
+        weight: { quantity: 0.5, measurement: "ounce" },
+      },
+    ],
+    steps: [
+      "In a medium pot, combine the oil, onions, garlic, and a pinch of salt over high heat. As soon as the onions and garlic begin simmering, stir, reduce the heat to low, cover, and cook for {Cook|10 minutes}.",
+      "Uncover, stir in the red pepper flakes, increase the heat to high, and add the wine. Simmer for {Simmer wine|2-3 minutes} to dissipate the alcohol. Using scissors, snip the tomatoes into smaller pieces as you add them to the pan. Season with a generous pinch of salt and cook at a gentle simmer for {Simmer|15 minutes}.",
+      "Transfer the sauce to a blender or food processor, add the basil, and puree until smooth. Taste and adjust with more salt if needed.",
+    ],
+  },
+  {
+    title: "Fresh Tomato Sauce",
+    categories: ["Sauces", "Tomato"],
+    ingredients: [
+      {
+        quantity: 2,
+        measurement: "pound",
+        name: "beefsteak or plum tomatoes, roughly chopped",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 4,
+        measurement: "count",
+        name: "red bell peppers, roughly chopped",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "water",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 0,
+        measurement: "noQuantity",
+        name: "kosher salt",
+        scaler: Scaler.Constant,
+      },
+      {
+        quantity: 4,
+        measurement: "tablespoon",
+        name: "unsalted butter",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 1 / 3,
+        measurement: "cup",
+        name: "fresh basil leaves, lightly packed",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "In a large pot, combine the tomatoes, peppers, water, and salt. Bring to a simmer, then reduce the heat to medium and simmer gently until nearly all of the liquid has cooked off and the tomatoes and peppers are sticking to the bottom of the pot, {Simmer|20-25 minutes} or longer depending on the juiciness of your tomatoes.",
+      "Stir in the butter and basil, then transfer to a food processor or blender and process until smooth. If using a blender, let the mixture cool slightly first, remove the steam vent lid, and cover with a tea towel before pureeing to prevent an eruption of hot sauce. Taste and adjust with more salt as needed.",
     ],
   },
 ];
