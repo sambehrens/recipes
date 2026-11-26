@@ -4173,4 +4173,102 @@ export const recipes: Recipe[] = [
       "Cover with aluminum foil and bake for {Bake|20 minutes}. Uncover and bake {Bake uncovered|10 minutes} more, until heated through and golden on top.",
     ],
   },
+  {
+    title: "Soft Sourdough Rolls",
+    source: "https://www.kingarthurbaking.com/recipes/soft-sourdough-rolls-recipe",
+    categories: ["Bread", "Sourdough"],
+    defaultMeasurement: "weight",
+    ingredients: [
+      {
+        quantity: 0.5,
+        measurement: "cup",
+        name: "ripe (fed) sourdough starter",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 113,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1,
+        measurement: "cup",
+        name: "lukewarm water",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 227,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2.5,
+        measurement: "cup",
+        name: "all-purpose flour",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 300,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1.5,
+        measurement: "teaspoon",
+        name: "table salt",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 9,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 2,
+        measurement: "tablespoon",
+        name: "granulated sugar",
+        scaler: Scaler.Multiply,
+      },
+      {
+        quantity: 6,
+        measurement: "tablespoon",
+        name: "unsalted butter, room temperature",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 85,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 0.25,
+        measurement: "cup",
+        name: "nonfat dry milk",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 28,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 0.25,
+        measurement: "cup",
+        name: "potato flour",
+        scaler: Scaler.Multiply,
+        weight: {
+          quantity: 46,
+          measurement: "gram",
+        },
+      },
+      {
+        quantity: 1.5,
+        measurement: "teaspoon",
+        name: "instant yeast",
+        scaler: Scaler.Multiply,
+      },
+    ],
+    steps: [
+      "Combine all of the ingredients, and mix and knead by hand, mixer, or bread machine set on the dough cycle, adding more flour or water if necessary to make a soft, smooth dough.",
+      "Place the dough in a lightly greased bowl, cover, and let rise at warm room temperature until nearly doubled in bulk, {Rise|60-90 minutes}. Meanwhile, lightly grease two 8-inch round cake pans.",
+      "Transfer the dough to a lightly greased work surface, gently deflate it, and divide into 16 pieces. Shape each piece into a ball and place eight in each pan, spaced so they don't touch.",
+      "Cover and let rise until the rolls are touching and very puffy, {Rise|60-90 minutes}. Meanwhile, preheat the oven to 350°F.",
+      "Bake for {Bake|24-26 minutes}, until lightly golden on top and a center roll reads 190°F.",
+      "Let cool in the pans for {Cool|2-3 minutes}, then carefully transfer to a rack to cool.",
+    ],
+  },
 ];
