@@ -4248,7 +4248,7 @@ export const recipes: Recipe[] = [
       {
         quantity: 0.25,
         measurement: "cup",
-        name: "potato flour",
+        name: "potato flour (or white rice flour)",
         scaler: Scaler.Multiply,
         weight: {
           quantity: 46,
